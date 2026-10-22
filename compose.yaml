@@ -1,0 +1,17 @@
+services:
+  laravel:
+    image: laravel13
+    container_name: laravel13-app
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8001:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    networks:
+      - mysql-network
+    restart: unless-stopped
+
+networks:
+  mysql-network:
+    external: true
