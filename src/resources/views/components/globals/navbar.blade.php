@@ -1,15 +1,15 @@
-<nav id="hero_section_navbar" class=" fixed top-0 left-0 right-0 flex items-center justify-between h-23 px-7 border border-white/5
+<nav id="hero_section_navbar" class=" fixed top-0 left-0 right-0 flex items-center justify-between h-18 px-7 border border-white/5
          bg-[#07140C]/85
          px-6 py-4
          backdrop-blur-xl
          shadow-[0_0_40px_rgba(74,222,128,0.08)] z-99">
     <div class="hero_section_navbar_left_panel flex justify-between items-center gap-10">
         <div class="flex gap-4 items-center">
-            <div class="border h-fit w-[4rem]">
+            <div class=" rounded-2xl overflow-hidden h-fit w-[2.5rem]">
                 <img src="{{ asset('/images/brands/logo K.png') }}" alt="" class="w-full h-full object-cover">
             </div>
 
-            <h2 class=" text-2xl md:text-3xl font-bold text-slate-300">Kandang Harian</h2>
+            <h2 class=" text-md md:text-xl font-bold text-slate-300">Kandang Harian</h2>
         </div>
     </div>
 
@@ -23,9 +23,9 @@
     </div>
 
     <div class="hero_section_navbar_right_panel flex items-center gap-5">
-        <i class="fa-regular fa-bell text-2xl text-slate-300"></i>
+        <i class="fa-regular fa-bell text-xl text-slate-300"></i>
 
-        <a href="/signup" class="rounded-full bg-white px-5 py-2 text-lg font-semibold text-slate-900 transition-colors hover:bg-slate-100">
+        <a href="{{ route('login') }}" class="rounded-full bg-white px-3 py-1 text-md font-semibold text-slate-900 transition-colors hover:bg-slate-100">
             Sign up
         </a>
 
