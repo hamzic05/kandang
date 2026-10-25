@@ -7,5 +7,15 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    //
+    public function index () {
+        $title = "Login Page";
+        
+        return view('auth.login', compact('title'));
+    }
+
+    public function register () {
+        $title = "Register Page";
+
+        return view('auth.register', compact('title'));
+    }
 }
