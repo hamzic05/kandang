@@ -1,12 +1,4 @@
-<x-layouts.auth>
-    <x-slot:auth_card_w>
-        35rem
-    </x-slot:auth_card_w>
-
-    <x-slot:auth_card_h>
-        29.5rem
-    </x-slot:auth_card_h>
-
+<x-layouts.auth style="width: 35rem; height: 29.5rem">
     <x-slot:auth_part>
         <div class="">
             <h1 class="font-serif text-3xl font-bold text-primary">Register</h1>

@@ -19,15 +19,7 @@
             </div>
     
             <div class="right_panel bg-[#f5f1e8] flex justify-center items-center">
-                <x-ui.auth_card>
-                    <x-slot:auth_card_w>
-                        {{ $auth_card_w }}
-                    </x-slot:auth_card_w>
-
-                    <x-slot:auth_card_h>
-                        {{ $auth_card_h }}
-                    </x-slot:auth_card_h>
-
+                <x-ui.auth_card {{ $attributes }}>
                     <x-slot:auth_part>
                         {{ $auth_part ?? "" }}
                     </x-slot:auth_part>
