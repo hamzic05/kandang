@@ -1,1 +1,48 @@
 *.sqlite*
+# Dependensi dan hasil build
+vendor/
+node_modules/
+public/build/
+public/hot
+bootstrap/cache/*.php
+!bootstrap/cache/.gitignore
+
+# Rahasia
+.env
+.env.*
+!.env.example
+auth.json
+*.pem
+*.key
+*.crt
+secrets.h
+
+# Data dan berkas runtime
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+public/storage
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+
+# Cadangan database
+*.sql.gz
+*.dump
+*.bak
+postgres-data/
+db-data/
+docker-data/
+
+# Editor, sistem, uji
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+.phpunit.result.cache
+.phpunit.cache/
+coverage/
+npm-debug.log
+yarn-error.log
