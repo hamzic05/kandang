@@ -2,14 +2,82 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source "../views";
+@source "../js";
 
 @theme {
     --font-sans: 'Roboto', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
     --font-serif: 'Instrument Serif', serif;
 
     --color-primary: #1D3B2A;
     --color-primary_v2: #07140C;
     --color-secondary: #2f5d3a;
 
+  /* Latar dan garis */
+  --color-krem: #f6f3ec;
+  --color-garis: #e3ddcf;
+  --color-garis-tua: #d8d2c3;
+  --color-jalur: #efe9db;
+
+  /* Teks */
+  --color-teks: #26302a;
+  --color-teks-lembut: #4a544d;
+  --color-teks-redup: #6b746d;
+  --color-tinta: #1f3a27;
+
+  /* Hijau: baik */
+  --color-hijau: #2f5d3a;
+  --color-hijau-muda: #e6efe3;
+
+  /* Kuning: pantau */
+  --color-kuning: #9a6a12;
+  --color-kuning-batang: #e8a33d;
+  --color-kuning-muda: #fdf1dc;
+  --color-kuning-tua: #6e4a08;
+
+  /* Merah: cek dan kritis */
+  --color-merah: #b3392f;
+  --color-merah-muda: #fbe9e6;
+  --color-merah-tua: #8f2a21;
+
+  --radius-kartu: 14px;
+  --spacing-sidebar: 240px;
 }
+
+/* bagian index dashboard admin */
+
+@layer base {
+  body {
+    @apply bg-krem font-sans text-teks antialiased;
+  }
+
+  /* Hormati pengaturan "kurangi gerakan" */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* Gabungan kelas yang dipakai ulang di HTML dan di JS.
+   Dengan @utility, nama ini bisa dipakai seperti kelas Tailwind biasa
+   (termasuk varian: hover:kartu, md:kartu, dst). */
+@utility kartu {
+  @apply rounded-kartu border border-garis bg-white;
+}
+
+@utility angka-judul {
+  @apply font-display font-bold tabular-nums;
+}
+
+/* Tautan di footer */
+@utility tautan-footer {
+  @apply rounded-sm transition-colors hover:text-tinta focus-visible:text-tinta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau;
+}
+
+
+/* bagian akhir index dashboard admin */

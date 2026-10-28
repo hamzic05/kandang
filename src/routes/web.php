@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ChickenController;
+use App\Http\Controllers\Admin\Chickens\ChickenController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,7 +13,7 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 
 Route::prefix('admin')
-    ->name('admin.')
+    ->name('admin. ')
     ->group(function () {
         Route::resource('chickens', ChickenController::class);
     });

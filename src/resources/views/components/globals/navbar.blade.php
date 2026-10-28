@@ -18,10 +18,10 @@
 
     <div class="hero_section_navbar_center_panel">
         <div id="hero_section_navbar_center_panel_nav" class="w-xs flex justify-between">
-            <x-ui.navlink href="/" :active="request()->is('/')"><x-slot:menu>Home</x-slot:menu></x-ui.navlink>
-            <x-ui.navlink href="/blog" :active="request()->is('blog')"><x-slot:menu>Blog</x-slot:menu></x-ui.navlink>
-            <x-ui.navlink href="/about" :active="request()->is('about')"><x-slot:menu>About</x-slot:menu></x-ui.navlink>
-            <x-ui.navlink href="/contact" :active="request()->is('contact')"><x-slot:menu>Contact</x-slot:menu></x-ui.navlink>
+            <a href="/" :active="request()->is('/')"><x-slot:menu>Home</x-slot:menu></a>
+            <a href="/blog" :active="request()->is('blog')"><x-slot:menu>Blog</x-slot:menu></a>
+            <a href="/about" :active="request()->is('about')"><x-slot:menu>About</x-slot:menu></a>
+            <a href="/contact" :active="request()->is('contact')"><x-slot:menu>Contact</x-slot:menu></a>
         </div>
     </div>
 
