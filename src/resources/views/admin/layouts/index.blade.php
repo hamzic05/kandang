@@ -39,7 +39,8 @@
 
     <script type="application/json" data-dash="data">
     {
-      "tanggal": "2026-10-23", "target_hd": 85, "batas_mati": 3,
+      "tanggal": "{{ now('Asia/Jakarta')->format('Y-m-d') }}",
+      "target_hd": 85, "batas_mati": 3,
       "status": [
         {"kamar":"A","hd_pct":91,"populasi":2410,"total_telur":2193,"ayam_mati":0},
         {"kamar":"B","hd_pct":89,"populasi":2398,"total_telur":2134,"ayam_mati":1},
@@ -60,6 +61,7 @@
         {"kamar":"E","tingkat":"waspada","pesan":"Produksi 81% turun dua hari berturut-turut (target 85%)"}
       ]
     }
+
     </script>
   </main>
 
