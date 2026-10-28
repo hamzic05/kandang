@@ -1,12 +1,4 @@
-<x-layouts.auth>
-    <x-slot:auth_card_w>
-        23.5rem
-    </x-slot:auth_card_w>
-
-    <x-slot:auth_card_h>
-        28.5rem
-    </x-slot:auth_card_h>
-
+<x-layouts.auth style="width: 23.5rem; height: 28.5rem;">
     <x-slot:auth_part>
         <div class="">
             <h1 class="font-serif text-3xl font-bold text-primary mb-1">Login</h1>
