@@ -15,7 +15,5 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
-
         Route::resource('chickens', ChickenController::class);
-
     });
