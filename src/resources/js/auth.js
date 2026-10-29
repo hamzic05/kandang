@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 break;
-
             }
 
             input.removeAttribute("aria-invalid");
@@ -46,18 +45,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleFormSubmit (event) {
         event.preventDefault();
 
-        if (!validateForm(event.currentTarget)) {
-            focusErrorField(event.currentTarget);
-            return;
-        }
+        if (!validateForm(event.currentTarget)) return;
 
         event.target.submit();
     }
 
-    const formElement = document.getElementById("form_container");
-    formElement.addEventListener("submit", handleFormSubmit);
-
-    filedContainer.addEventListener("click", function (event) {
+    /**
+     * 
+     * @param {MouseEvent} event 
+     */
+    function handlePasswordVisibility (event) {
         const iVisibTarget = event.target.closest("#i_visibPass, #i_visibConfirmPass");
         
         if(!iVisibTarget) return;
@@ -69,5 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
         fPassSelectd.type = fPassSelectd.type == "password" ? "text" : "password";
         iVisibTarget.classList.toggle("fa-eye", fPassSelectd.type === "text");
         iVisibTarget.classList.toggle("fa-eye-slash", fPassSelectd.type === "password");
-    })
+    }
+
+    const formElement = document.getElementById("form_container");
+    formElement.addEventListener("submit", handleFormSubmit);
+
+    const fieldContainer = document.querySelector(".field_container");
+    fieldContainer.addEventListener("click", handlePasswordVisibility);
 })

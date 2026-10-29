@@ -1,21 +1,29 @@
 import './bootstrap';
 import './auth';
 
-document.addEventListener("DOMContentLoaded", function () {
-    const sideBar = document.querySelector("#side_bar"); 
+document.addEventListener("DOMContentLoaded", function () { 
+  /**
+   * @param {MouseEvent} event
+   * @param {HTMLElement} sideBarElement 
+   */
+  function toggleSidebar (event, sideBarElement) {
+    const navToggle = event.target.closest("#ham_btn, #close_ham_btn");
+    const sideBarClose = sideBarElement.classList.contains("translate-x-full");
 
-    document.addEventListener('click', function (event) {
-        const navToggle = event.target.closest("#ham_btn, #close_ham_btn");
-        const sideBarClose = sideBar.classList.contains("translate-x-full");
+    if (navToggle) {
+        sideBarElement.classList.toggle("translate-x-full");
+    }
 
-        if (navToggle) {
-            sideBar.classList.toggle("translate-x-full");
-        }
+    if (!sideBarClose && !sideBarElement.contains(event.target)) {
+        sideBarElement.classList.add("translate-x-full");
+    }
+  }
 
-        if (!sideBarClose && !sideBar.contains(event.target)) {
-            sideBar.classList.add("translate-x-full");
-        }
-    }) 
+  const sideBar = document.querySelector("#side_bar");
+  document.addEventListener('click', (event) => {
+    if (!sideBar) return;
+    toggleSidebar(event, sideBar);
+  });  
 })
 
 /*dashboard admin*/
