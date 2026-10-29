@@ -5,6 +5,10 @@
 @source "../views";
 @source "../js";
 
+input[aria-invalid="true"] {
+    @apply border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-400 placeholder-red-300;
+}
+
 @theme {
     --font-sans: 'Roboto', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-display: "Fraunces", ui-serif, Georgia, serif;
@@ -13,6 +17,7 @@
     --color-primary: #1D3B2A;
     --color-primary_v2: #07140C;
     --color-secondary: #2f5d3a;
+    
 
   /* Latar dan garis */
   --color-krem: #f6f3ec;

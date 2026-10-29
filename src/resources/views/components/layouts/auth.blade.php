@@ -19,11 +19,11 @@
             </div>
     
             <div class="right_panel bg-[#f5f1e8] flex justify-center items-center">
-                <x-ui.auth_card {{ $attributes }}>
+                <x-ui.auth.auth_card {{ $attributes }}>
                     <x-slot:auth_part>
                         {{ $auth_part ?? "" }}
                     </x-slot:auth_part>
-                </x-ui.auth_card>
+                </x-ui.auth.auth_card>
             </div>
         </div>
     </x-slot:content>

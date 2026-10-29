@@ -12,7 +12,10 @@
     <title>{{ $title ?? "" }}</title>
 </head>
 <body>
-    <x-globals.navbar></x-globals.navbar>
-    {{ $content ?? "" }}
+    <x-partials.landing.header/>
+    
+    <main>
+        {{ $content ?? "" }}
+    </main>
 </body>
 </html>

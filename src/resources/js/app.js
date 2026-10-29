@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!sideBarClose && !sideBar.contains(event.target)) {
             sideBar.classList.add("translate-x-full");
         }
-    })
-
-    
+    }) 
 })
 
 /*dashboard admin*/
@@ -296,7 +294,10 @@ if (root) {
     const url = root.dataset.url;
     if (!url) {
       const inline = readInline();
-      if (inline) { showError(""); render(inline); } else showError("Data dashboard tidak ditemukan.");
+      if (inline) { 
+        showError(""); 
+        render(inline); 
+      } else showError("Data dashboard tidak ditemukan.");
       return;
     }
     try {
@@ -318,6 +319,4 @@ if (root) {
     document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
   }
 }
-
-
 /*end dashboard admin*/
