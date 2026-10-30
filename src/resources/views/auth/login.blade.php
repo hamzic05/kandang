@@ -9,34 +9,43 @@
         </div>
 
         <div class="">
-            <form id="form_container" action="" method="POST">
+            <form id="form_container" action="{{ route('login.store') }}" method="POST">
                 @csrf
                 <div class="field_container">
                     <div class="usernameF_container mb-3.5 space-y-1.5">
                         <label for="username" class="block text-xs font-semibold text-stone-800">Nama pengguna</label>
-                        <input id="username" name="username" type="text" autocomplete="username" data-required
-                        class="w-full rounded-lg border border-stone-300 text-sm outline-none px-3 py-2 focus:border-primary focus:ring-1 focus:ring-[#2f5d3a]"/>
+                        <input id="username" name="name" type="text" autocomplete="username" data-required
+                            class="w-full rounded-lg border border-stone-300 text-sm outline-none px-3 py-2 focus:border-primary focus:ring-1 focus:ring-[#2f5d3a]" />
+                        @error('name')
+                            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="passwordF_container mb-3.5 space-y-1.5">
                         <label for="f_pass" class="block text-xs font-semibold text-stone-800">Kata sandi</label>
                         <div class="relative">
-                            <input id="f_pass" name="password" type="password" autocomplete="current-password" data-required class="w-full rounded-lg border border-stone-300 px-3 py-2 pr-16 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-[#2f5d3a]" />
-                            <i id="i_visibPass" class="fa-solid fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2"></i>
+                            <input id="f_pass" name="password" type="password" autocomplete="current-password"
+                                data-required
+                                class="w-full rounded-lg border border-stone-300 px-3 py-2 pr-16 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-[#2f5d3a]" />
+                            <i id="i_visibPass"
+                                class="fa-solid fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2"></i>
                         </div>
+                        @error('password')
+                            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="flex justify-between mb-3.5">
                     <label class="flex items-center gap-2 text-xs text-stone-700">
-                    <input type="checkbox" name="remember" class="size-3 rounded accent-primary" />
-                    Ingat saya
+                        <input type="checkbox" name="remember" class="size-3 rounded accent-primary" />
+                        Ingat saya
                     </label>
 
                     <a href="#" class="font-semibold text-xs text-secondary hover:underline">Lupa kata sandi?</a>
                 </div>
 
-                <x-globals.error_banner/>
+
 
                 <button type="submit" name="btn_submit"
                     class="mt-2 w-full h-11 rounded-lg bg-secondary py-2.5 text-md font-medium text-white hover:bg-primary transition-colors cursor-pointer">
@@ -55,10 +64,12 @@
 
         <a href="#" class="block h-11">
             <div class="h-full bg-secondary rounded-lg hover:bg-primary transition-colors">
-                <div class="h-full w-full flex justify-center py-2.5 bg-secondary rounded-lg hover:bg-primary transition-colors  cursor-pointer">
+                <div
+                    class="h-full w-full flex justify-center py-2.5 bg-secondary rounded-lg hover:bg-primary transition-colors  cursor-pointer">
                     <div class="h-full w-fit flex gap-2 items-center">
                         <div class="w-fit h-full overflow-hidden">
-                            <img src="{{ asset('images/brands/google.svg.svg') }}" alt="" class="w-full h-full object-cover">
+                            <img src="{{ asset('images/brands/google.svg.svg') }}" alt=""
+                                class="w-full h-full object-cover">
                         </div>
 
                         <p class=" text-md font-bold tracking-tight text-white">Lanjut dengan Google</p>

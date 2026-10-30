@@ -1,21 +1,30 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthController;
+
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Chickens\ChickenController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\RegisterController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::resource('register', RegisterController::class)->only(['index', 'store'])->names([
+    'index' => 'register',
+    'store' => 'register.store'
+]);
+
+Route::resource('login', LoginController::class)->only(['index', 'store'])->names([
+    'index' => 'login',
+    'store' => 'login.store'
+])->middleware('guest');
 
 
 Route::prefix('admin')
-    ->name('admin. ')
+    ->name('admin.')->middleware('auth')
     ->group(function () {
         Route::resource('dashboard', DashboardController::class);
     });

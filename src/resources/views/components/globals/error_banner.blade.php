@@ -1,1 +1,0 @@
-<div id="error_massage" role="alert" class="hidden py-2 rounded-lg text-xs font-semibold bg-[#F8D7DA] text-[#842029] text-center"></div>
