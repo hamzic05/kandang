@@ -6,21 +6,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Chickens\ChickenController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
-
+use App\Http\Controllers\Admin\RegisteredGoogleController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('register', RegisterController::class)->only(['index', 'store'])->names([
-    'index' => 'register',
-    'store' => 'register.store'
-]);
 
-Route::resource('login', LoginController::class)->only(['index', 'store'])->names([
-    'index' => 'login',
-    'store' => 'login.store'
-])->middleware('guest');
+Route::middleware('guest')->group(function () {
+    Route::resource('register', RegisterController::class)->only(['index', 'store'])->names([
+        'index' => 'register',
+        'store' => 'register.store'
+    ]);
+
+    Route::get('/register/google', [RegisteredGoogleController::class, 'redirect'])->name('register.google');
+
+    Route::resource('login', LoginController::class)->only(['index', 'store'])->names([
+        'index' => 'login',
+        'store' => 'login.store'
+    ]);
+});
+
+Route::get('/register/google/callback', [RegisteredGoogleController::class, 'callback'])->name('register.google.callback');
 
 
 Route::prefix('admin')

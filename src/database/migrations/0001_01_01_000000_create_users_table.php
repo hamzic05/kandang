@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone', 13);
-            $table->text('address');
+            $table->string('phone', 13)->nullable();
+            $table->text('address')->nullable();
+            $table->string('google_id')->nullable()->unique();
+            $table->string('avatar')->nullable();
+            $table->string('last_login_ip', 45)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

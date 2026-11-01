@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <a href="#" class="block h-11">
+        <a href="{{ route('register.google') }}" class="block h-11">
             <div class="h-full bg-secondary rounded-lg hover:bg-primary transition-colors">
                 <div
                     class="h-full w-full flex justify-center py-2.5 bg-secondary rounded-lg hover:bg-primary transition-colors  cursor-pointer">
