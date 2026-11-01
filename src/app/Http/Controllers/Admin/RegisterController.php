@@ -20,7 +20,7 @@ class RegisterController extends Controller
     {
         $validated = $request->validate(
             [
-                'name' => ['required', 'string', 'max:50', 'alpha_dash'],
+                'name' => ['required', 'string', 'max:50'],
                 'email' => ['required', 'string', 'email:dns', 'unique:users,email'],
                 'password' => ['required', 'string', 'confirmed', Password::min(8)],
                 'phone' => ['required', 'string', 'max:13'],
@@ -28,7 +28,6 @@ class RegisterController extends Controller
             ],
             [
                 'name.required' => 'Nama pengguna wajib diisi',
-                'name.alpha_dash' => 'Nama pengguna hanya bisa berisi huruf, angka dan simbol',
                 'name.max' => 'Nama pengguna maksimal 50',
 
                 'email.required' => 'Email wajib diisi',
