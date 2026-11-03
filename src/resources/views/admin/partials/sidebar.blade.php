@@ -2,7 +2,7 @@
     md:w-sidebar md:flex-none md:flex-col md:items-stretch md:gap-1.5 md:border-r md:border-b-0 md:px-[18px] md:py-6">
 
     {{-- Logo --}}
-    <a href=""
+    <a href="{{ route('admin.dashboard.index') }}"
         class="mr-3 flex items-center gap-2.5 text-tinta md:mr-0 md:mb-[22px]">
 
         <span class="grid size-8 place-items-center rounded-[9px] bg-hijau font-display font-bold text-krem">
@@ -15,7 +15,7 @@
     </a>
 
     {{-- Menu Navigasi --}}
-    <a href=""
+    <a href="{{ route('admin.dashboard.index') }}"
         class="block rounded-[10px] px-3.5 py-[11px] text-[15px]
         {{ request()->routeIs('admin.dashboard') 
             ? 'bg-hijau-muda font-semibold text-tinta' 
@@ -23,7 +23,7 @@
         Dashboard
     </a>
 
-    <a href=""
+    <a href="#"
         class="block rounded-[10px] px-3.5 py-[11px] text-[15px]
         {{ request()->routeIs('admin.health.*') 
             ? 'bg-hijau-muda font-semibold text-tinta' 
@@ -39,7 +39,7 @@
         Pakan dan obat
     </a>
 
-    <a href=""
+    <a href="#"
         class="block rounded-[10px] px-3.5 py-[11px] text-[15px]
         {{ request()->routeIs('admin.iot.*') 
             ? 'bg-hijau-muda font-semibold text-tinta' 
@@ -70,7 +70,7 @@
         </div>
 
         {{-- Tombol Logout --}}
-        <form action="" method="POST">
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
 
             <button type="submit"

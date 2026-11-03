@@ -28,7 +28,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/register/google/callback', [RegisteredGoogleController::class, 'callback'])->name('register.google.callback');
-
+Route::post('logout', [DashboardController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')
     ->name('admin.')->middleware('auth')
