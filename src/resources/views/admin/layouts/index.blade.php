@@ -9,7 +9,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<div class="flex min-h-screen flex-col md:flex-row">
+<div class="flex min-h-screen flex-col lg:flex-row">
 
 <!-- Sidebar -->
 @include('admin.partials.sidebar')
@@ -18,7 +18,11 @@
   <div class="flex min-w-0 flex-1 flex-col">
   <main data-dashboard data-refresh="0" class="flex flex-1 flex-col gap-[22px] p-4 sm:p-6 xl:px-10 xl:py-8">
 
-   @include('admin.partials.header')
+   {{-- @include('admin.partials.header') --}}
+   <x-partials.admin.header>
+    <x-slot:page_header>Semua data kamar hari ini</x-slot:page_header>
+    <x-slot:page_title>Ringkasan produksi</x-slot:page_title>
+   </x-partials.admin.header>
 
     <div data-dash="error" role="alert" class="hidden rounded-[10px] bg-merah-muda px-3.5 py-3 text-sm text-merah-tua"></div>
 

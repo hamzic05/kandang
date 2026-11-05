@@ -1,5 +1,9 @@
 import './bootstrap';
 import './auth';
+import './admin/sidebar';
+import './admin/medicine_search';
+import './admin/medicine_create';
+import './admin/medicine_inventory';
 
 document.addEventListener("DOMContentLoaded", function () { 
   /**
