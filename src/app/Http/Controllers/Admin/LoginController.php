@@ -19,19 +19,20 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
+
         $credentials = $request->validate(
             [
                 'name' => ['required', 'string'],
                 'password' => ['required', 'string'],
-                'remember' => ['nullable', 'boolean']
             ],
             [
                 'name.required' => 'Nama pengguna wajib diisi',
-                'password' => 'Kata sandi wajib diisi'
+                'password.required' => 'Kata sandi wajib diisi'
             ]
         );
 
         $remember = $request->boolean('remember');
+
 
         if (!Auth::attempt([
             'name' => $credentials['name'],
