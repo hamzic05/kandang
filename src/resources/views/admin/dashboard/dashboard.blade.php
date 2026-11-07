@@ -5,22 +5,23 @@
     <x-slot:page_header>Semua kamar, data hari ini</x-slot:page_header>
     <x-slot:page_title>Ringkasan produksi</x-slot:page_title>
 </x-partials.admin.header>
+<x-partials.admin.breadcrumb />
 
 <div data-dash="error" role="alert" class="hidden rounded-[10px] bg-merah-muda px-3.5 py-3 text-sm text-merah-tua">
 </div>
 
 <!-- Bagian angka ringkas / KPI-->
-@include('admin.partials.kpi')
+@include('admin.dashboard.kpi')
 
 <!-- Bagian kamar -->
-@include('admin.partials.rooms')
+@include('admin.dashboard.rooms')
 
 <section class="flex flex-col items-stretch gap-4 xl:flex-row xl:items-start">
   <!-- Bagian grafik -->
-  @include('admin.partials.chart')
+  @include('admin.dashboard.chart')
 
   <!-- Bagian peringatan -->
-  @include('admin.partials.alert')
+  @include('admin.dashboard.alert')
 
   <script type="application/json" data-dash="data">
     {

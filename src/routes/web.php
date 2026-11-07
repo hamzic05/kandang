@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Chickens\ChickenController;
+use App\Http\Controllers\Admin\Houses\HouseController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\Medicine\MedicineController;
 use App\Http\Controllers\Admin\RegisterController;
@@ -34,9 +35,11 @@ Route::post('logout', [DashboardController::class, 'logout'])->name('logout');
 Route::prefix('admin')
     ->name('admin.')->middleware('auth')
     ->group(function () {
-        Route::get('medicine/inventory', [MedicineController::class, 'inventory'])
-        ->name('medicine.inventory');
-        
         Route::resource('dashboard', DashboardController::class);
+        //house
+        Route::resource('houses', HouseController::class);
+        //medicine
+    Route::get('medicine/inventory', [MedicineController::class, 'inventory'])
+        ->name('medicine.inventory');
         Route::resource('medicine', MedicineController::class);
     });

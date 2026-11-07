@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function index()
     {
         
-        return view ('admin.partials.dashboard');
+        return view ('admin.dashboard.dashboard');
     }
 
     public function logout(Request $request)
