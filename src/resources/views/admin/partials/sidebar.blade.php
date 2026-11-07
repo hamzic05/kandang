@@ -3,7 +3,7 @@
   //Status dropdown utama
     $isChickenHousesActive = request()->routeIs([
         'admin.houses.*',
-        'admin.chickens.*',
+        'admin.zones.*',
     ]);
 
   $isHealthActive = request()->routeIs('admin.health.*');
@@ -41,7 +41,7 @@
         data-target="menu_ayam_kamar"
         data-dropdown-trigger
     >
-        <span>Zone & Kamar Ayam</span>
+        <span>Manajemen Kandang Ayam</span>
 
         <span class="arrow block text-2xl transition-transform duration-300
             {{ $isChickenHousesActive ? 'rotate-90' : '' }}">
@@ -60,25 +60,21 @@
     >
 
         <div class="flex flex-col gap-1.5 overflow-hidden">
-
-            {{-- Ayam --}}
-            <a href="#"
-                class="dropdown_menu block rounded-md px-3 py-2 transition-colors
-                {{ $isChickenMenuActive
-                    ? 'bg-hijau-muda text-tinta font-semibold'
-                    : 'text-teks-lembut hover:bg-jalur'
-                }}">
-                Ayam
-            </a>
-
-            {{-- Nomor Kamar --}}
-            <a href="{{ route('admin.houses.index') }}"
+<a href="{{ route('admin.houses.index') }}"
                 class="dropdown_menu block rounded-md px-3 py-2 transition-colors
                 {{ $isHouseActive
                     ? 'bg-hijau-muda text-tinta font-semibold'
                     : 'text-teks-lembut hover:bg-jalur'
                 }}">
-                Nomor dan Zona Kamar
+                Kandang Ayam
+            </a>
+            <a href="{{ route('admin.zones.index') }}"
+                class="dropdown_menu block rounded-md px-3 py-2 transition-colors
+                {{ $isZoneActive
+                    ? 'bg-hijau-muda text-tinta font-semibold'
+                    : 'text-teks-lembut hover:bg-jalur'
+                }}">
+                Zone Kandang
             </a>
         </div>
     </div>

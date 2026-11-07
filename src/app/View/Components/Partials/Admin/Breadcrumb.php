@@ -17,18 +17,13 @@ class Breadcrumb extends Component
             ],
 
             'admin.houses.*' => [
-                ['title' => 'Zone & Kamar Ayam', 'url' => null],
-                ['title' => 'Nomor Kamar', 'url' => null],
-            ],
-
-            'admin.chickens.*' => [
-                ['title' => 'Zone & Kamar Ayam', 'url' => null],
-                ['title' => 'Data Ayam', 'url' => null],
+                ['title' => 'Manajemen Kandang ayam', 'url' => null],
+                ['title' => 'Kandang Ayam', 'url' => null],
             ],
 
             'admin.zones.*' => [
-                ['title' => 'Zone & Kamar Ayam', 'url' => null],
-                ['title' => 'Zone Kamar', 'url' => null],
+                ['title' => 'Manajemen Kandang Ayam', 'url' => null],
+                ['title' => 'Zone Kandang', 'url' => null],
             ],
 
             'admin.health.*' => [

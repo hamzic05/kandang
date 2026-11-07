@@ -35,5 +35,7 @@
         </div>
     </div>
 </body>
+    <script data-dash="data" type="applicaton/json">{"tanggal": "{{ now('Asia/Jakarta')->format('Y-m-d') }}"}</script>
+
 
 </html>

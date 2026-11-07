@@ -19,6 +19,7 @@ return new class extends Migration {
 
             $table->string('code', 30);
             $table->string('name', 100);
+            $table->unsignedBigInteger('status',11);
             $table->unsignedInteger('capacity');
 
             $table->timestamps();
