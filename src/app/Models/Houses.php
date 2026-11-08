@@ -12,6 +12,9 @@ class Houses extends Model
         'name',
         'location',
         'description',
+        'coop_type',
+        'dimensions',
+        'total_area',
     ];
 
     public function zonechicken()

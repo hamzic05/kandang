@@ -16,9 +16,21 @@ class Breadcrumb extends Component
                 ['title' => 'Dashboard', 'url' => null],
             ],
 
-            'admin.houses.*' => [
-                ['title' => 'Manajemen Kandang ayam', 'url' => null],
-                ['title' => 'Kandang Ayam', 'url' => null],
+            'admin.houses.index' => [
+                ['title' => 'Manajemen Kandang', 'url' => null],
+                ['title' => 'Kandang Ayam', 'url' => null],          // halaman aktif, tanpa link
+            ],
+
+            'admin.houses.create' => [
+                ['title' => 'Manajemen Kandang', 'url' => null],
+                ['title' => 'Kandang Ayam', 'url' => route('admin.houses.index')],
+                ['title' => 'Tambah Kandang', 'url' => null],
+            ],
+
+            'admin.houses.edit' => [
+                ['title' => 'Manajemen Kandang', 'url' => null],
+                ['title' => 'Kandang Ayam', 'url' => route('admin.houses.index')],
+                ['title' => 'Ubah Kandang', 'url' => null],
             ],
 
             'admin.zones.*' => [

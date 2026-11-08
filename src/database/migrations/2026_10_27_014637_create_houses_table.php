@@ -13,9 +13,10 @@ return new class extends Migration {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('code', 30)->unique();
-            $table->string('dimensi', 100);
-            $table->string('luas_total', 100);
+            $table->string('dimensions', 100);
+            $table->string('total_area', 100);
             $table->string('name', 100);
+            $table->string('coop_type', 5);
             $table->string('location')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
