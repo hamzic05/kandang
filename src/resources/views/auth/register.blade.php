@@ -11,7 +11,7 @@
                     <div class="field_container grid grid-cols-2 gap-2.5">
                         <x-ui.input label="Nama Pengguna" name="name" autocomplete="name" data-required></x-ui.input>
                         <x-ui.input label="Kata sandi" name="password" type="password" autocomplete="new-password" data-required></x-ui.input>
-                        <x-ui.input label="Ulangi kata sandi" name="password_confirmation" type="password" autocomplete="new-password" data-required></x-ui.input>
+                        <x-ui.input label="Ulangi kata sandi" name="password-confirmation" type="password" autocomplete="new-password" data-required></x-ui.input>
                         <x-ui.input label="Email" name="email" type="email" autocomplete="email" data-required></x-ui.input>
                         <x-ui.input label="Nomor HP" name="phone" type="tel" autocomplete="tel" data-required></x-ui.input>
                         <x-ui.textarea label="Alamat" name="address" autocomplete="street-address" data-required></x-ui.textarea>
