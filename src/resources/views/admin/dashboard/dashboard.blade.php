@@ -1,10 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-<x-partials.admin.header>
-    <x-slot:page_header>Semua kamar, data hari ini</x-slot:page_header>
-    <x-slot:page_title>Ringkasan produksi</x-slot:page_title>
-</x-partials.admin.header>
+<x-partials.admin.header header="Semua kamar, data hari ini" title="Ringkasan produksi"/>
 <x-partials.admin.breadcrumb />
 
 <div data-dash="error" role="alert" class="hidden rounded-[10px] bg-merah-muda px-3.5 py-3 text-sm text-merah-tua">

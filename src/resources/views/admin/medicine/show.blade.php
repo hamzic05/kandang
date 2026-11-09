@@ -1,10 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-    <x-partials.admin.header>
-        <x-slot:page_header>Informasi lengkap persediaan obat</x-slot:page_header>
-        <x-slot:page_title>Detail obat</x-slot:page_title>
-    </x-partials.admin.header>
+    <x-partials.admin.header header="Informasi lengkap persediaan obat" title="Detail obat"/>
 
     <div class="p-6 md:p-8 rounded-2xl border border-garis bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] overflow-hidden">
         <div class="flex flex-col gap-10">
@@ -99,17 +96,8 @@
     
             <div class="">
                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between gap-3">
-                    <a href="{{ route('admin.medicine.inventory') }}"
-                        class="flex items-center justify-center gap-2 rounded-[10px] px-4 py-3 text-sm font-semibold text-stone-700 bg-white border border-stone-300 hover:bg-stone-50 hover:border-stone-400 transition-colors">
-                        <i class="fa-solid fa-arrow-left text-xs"></i>
-                        Halaman inventaris
-                    </a>
-    
-                    <a href="{{ route('admin.medicine.edit', 1) }}"
-                        class="flex items-center justify-center gap-2 bg-hijau text-white rounded-[10px] px-5 py-3 text-sm font-semibold hover:bg-tinta transition-colors">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        Edit Obat
-                    </a>
+                    <x-ui.a_button route="admin.medicine.inventory" icon="fa-arrow-left" name="Halaman inventaris" class="gap-2"/>
+                    <x-ui.a_button route="admin.medicine.edit" :params="[1]" icon="fa-pen-to-square" name="Edit obat" class="gap-2 text-white bg-hijau border border-tinta hover:bg-tinta hover:border-stone-400"/>
                 </div>
             </div>
         </div>

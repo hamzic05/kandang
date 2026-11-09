@@ -104,7 +104,7 @@ function handleSelectAll(selectAllWrp, delEl, elements) {
         hideDelete(delEl);
     }
 }
-
+ 
 /**
  * 
  * @param {HTMLElement} toggle

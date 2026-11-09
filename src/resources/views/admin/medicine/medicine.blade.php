@@ -1,10 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-    <x-partials.admin.header>
-        <x-slot:page_header>Manajemen kesehatan</x-slot:page_header>
-        <x-slot:page_title>Vitamin dan obat</x-slot:page_title>
-    </x-partials.admin.header>
+    <x-partials.admin.header header="Manajemen kesehatan" title="Vitamin dan obat"/>
 
     @include('admin.medicine.sumcard')
 

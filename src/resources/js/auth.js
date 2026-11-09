@@ -3,21 +3,21 @@
  * @returns
  */
 function handlePasswordVisibility(event) {
-    const iVisibTarget = event.target.closest(
-        "#i_visibPass, #i_visibConfirmPass",
+    const toggleTarget = event.target.closest(
+        "#password_toggle, #password-confirmation_toggle",
     );
 
-    if (!iVisibTarget) return;
+    if (!toggleTarget) return;
     let fPassId =
-        iVisibTarget.id === "i_visibPass" ? "#f_pass" : "#fConfrm_pass";
+        toggleTarget.id === "password_toggle" ? "#password" : "#password-confirmation";
 
     const fPassSelectd = document.querySelector(fPassId);
     if (!fPassSelectd) return;
 
     fPassSelectd.type =
         fPassSelectd.type == "password" ? "text" : "password";
-    iVisibTarget.classList.toggle("fa-eye", fPassSelectd.type === "text");
-    iVisibTarget.classList.toggle(
+    toggleTarget.classList.toggle("fa-eye", fPassSelectd.type === "text");
+    toggleTarget.classList.toggle(
         "fa-eye-slash",
         fPassSelectd.type === "password",
     );

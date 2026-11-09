@@ -4,9 +4,3 @@
         <input id="search_input" type="search" placeholder="Cari nama obat" class="flex-1 text-sm text-tinta placeholder-teks-redup focus:outline-none transition-all">
     </div>
 </div>
-
-{{-- <div id="medicine_container">
-    @include('admin.medicine.inventory_list', [
-        'medicines' => $medicines
-    ])
-</div> --}}

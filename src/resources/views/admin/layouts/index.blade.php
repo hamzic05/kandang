@@ -19,10 +19,7 @@
   <main data-dashboard data-refresh="0" class="flex flex-1 flex-col gap-[22px] p-4 sm:p-6 xl:px-10 xl:py-8">
 
    {{-- @include('admin.partials.header') --}}
-   <x-partials.admin.header>
-    <x-slot:page_header>Semua data kamar hari ini</x-slot:page_header>
-    <x-slot:page_title>Ringkasan produksi</x-slot:page_title>
-   </x-partials.admin.header>
+   <x-partials.admin.header header="Semua kamar, data hari ini" title="Ringkasan produksi"/>
 
     <div data-dash="error" role="alert" class="hidden rounded-[10px] bg-merah-muda px-3.5 py-3 text-sm text-merah-tua"></div>
 

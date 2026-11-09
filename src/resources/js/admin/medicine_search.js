@@ -6,6 +6,10 @@ const medicineElAttributes = {
     med_isactive: "mt-1.5 text-sm teks-lembut"
 }
 
+/**
+ * 
+ * @param {HTMLElement} medicineContainer 
+ */
 function setEmptySearch(medicineContainer) {
     medicineContainer.innerHTML = `
         <p class="py-8 text-center text-teks-lembut">
@@ -14,6 +18,11 @@ function setEmptySearch(medicineContainer) {
     `;
 }
 
+/**
+ * 
+ * @param {} medicine 
+ * @returns 
+ */
 function createMedicine(medicine) {
     const wrapper = document.createElement("div");
     wrapper.className = medicineElAttributes.wrapper
@@ -41,6 +50,11 @@ function createMedicine(medicine) {
     return wrapper;
 }
 
+/**
+ * 
+ * @param {*} medicines 
+ * @returns 
+ */
 function renderMedicines(medicines) {
     const medicineContainer = document.querySelector('[data-dash="medicine"]');
     if(!medicineContainer) return;
