@@ -12,6 +12,8 @@ protected $table = "house_zones";
         'code',
         'name',
         'capacity',
+        'status',
+        'description',
     ];
 public function houses()
     {

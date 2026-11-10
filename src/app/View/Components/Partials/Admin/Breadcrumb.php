@@ -12,9 +12,12 @@ class Breadcrumb extends Component
     public function __construct()
     {
         $menus = [
+            //dashboard
             'admin.dashboard.*' => [
                 ['title' => 'Dashboard', 'url' => null],
             ],
+
+            //houses
 
             'admin.houses.index' => [
                 ['title' => 'Manajemen Kandang', 'url' => null],
@@ -33,14 +36,31 @@ class Breadcrumb extends Component
                 ['title' => 'Ubah Kandang', 'url' => null],
             ],
 
-            'admin.zones.*' => [
+            //zones
+
+            'admin.zones.index' => [
                 ['title' => 'Manajemen Kandang Ayam', 'url' => null],
-                ['title' => 'Zone Kandang', 'url' => null],
+                ['title' => 'Zona Kandang', 'url' => null],
             ],
 
+            'admin.zones.create' => [
+                ['title' => 'Manajemen Kandang Ayam', 'url' => null],
+                ['title' => 'Zona Kandang', 'url' => route('admin.zones.index')],
+                ['title' => 'Tambah Zona', 'url' => null],
+            ],
+
+            'admin.zones.show' => [
+                ['title' => 'Manajemen Kandang Ayam', 'url' => null],
+                ['title' => 'Zona Kandang', 'url' => route('admin.zones.index')],
+                ['title' => 'Detail Zona Kandang', 'url' => null],
+            ],
+
+            //health
             'admin.health.*' => [
                 ['title' => 'Kesehatan', 'url' => null],
             ],
+
+            //feed and medicine
 
             'admin.feed.*' => [
                 ['title' => 'Pakan dan Obat', 'url' => null],

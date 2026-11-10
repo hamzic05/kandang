@@ -19,11 +19,12 @@ return new class extends Migration {
 
             $table->string('code', 30);
             $table->string('name', 100);
-            $table->unsignedBigInteger('status',11);
-            $table->unsignedInteger('capacity');
-
+            $table->string('code_blend', 30);
+            $table->string('name_blend', 100);
+            $table->unsignedInteger('status', 11);
+            $table->unsignedInteger('capacity', 10);
+            $table->text('description')->nullable();
             $table->timestamps();
-
             $table->unique(['house_id', 'code']);
         });
     }
