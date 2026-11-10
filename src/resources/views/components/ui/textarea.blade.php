@@ -8,6 +8,6 @@
     <textarea id="{{ $name }}" name="{{ $name }}" rows="3"
     {{ $attributes->merge([
         'class' => "field w-full rounded-lg border border-stone-300 text-sm outline-none px-3 py-2 focus:border-primary focus:ring-1 focus:ring-[#2f5d3a]"
-    ]) }}
+    ])}}
     ></textarea>
 </div>

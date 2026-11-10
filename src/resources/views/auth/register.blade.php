@@ -3,9 +3,9 @@
 @section('right_panel')
     <div class="bg-white w-[35rem] rounded-2xl shadow-sm py-[2rem] px-[2rem] h-fit">
         <div class="flex flex-col justify-between">
-            <x-auth.form_header heading="Register" subheading="Buat akun pertama anda"/>
+            <x-auth.form_header heading="Register" subheading="Sudah punya akun?" route="login" route_label="Login"/>
 
-            <div class="">
+            <div class="mt-3">
                 <form id="form_container" action="{{ route('register.store') }}" method="POST">
                     @csrf
                     <div class="field_container grid grid-cols-2 gap-2.5">

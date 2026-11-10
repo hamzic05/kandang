@@ -5,7 +5,7 @@
         <div class="flex flex-col justify-between">
             <x-auth.form_header heading="Login" subheading="Pengguna baru?" route="register" route_label="Buat akun baru"/>
 
-            <div class="">
+            <div class="mt-3">
                 <form id="form_container" action="{{ route('login.store') }}" method="POST">
                     @csrf
                     <div class="field_container">
