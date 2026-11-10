@@ -20,13 +20,13 @@ function checkFilled(fields) {
 function showBtn(btnContainer) {
     if(!btnContainer) return;
     btnContainer.classList.remove("opacity-0", "translate-y-2", "pointer-events-none")
-    btnContainer.classList.add("opacity-100", "translate-y-0", "pointer-event-auto");
+    btnContainer.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
 }
 
 function hideBtn(btnContainer) {
     if(!btnContainer) return;
     btnContainer.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
-    btnContainer.classList.add("opacity-0", "translate-y-2", "pointer-event-none");
+    btnContainer.classList.add("opacity-0", "translate-y-2", "pointer-events-none");
 }
 
 /**
@@ -34,17 +34,17 @@ function hideBtn(btnContainer) {
  * @param {NodeList} fields 
  * @returns 
  */
-function resetFeilds(fields, btnContainer) {
+function resetFields(fields, btnContainer) {
     if(!checkFilled(fields)) return;
     fields.forEach(field => {
         if(field.type === "checkbox" || field.type === "radio"){
-            field.value = false;
+            field.checked = false;
         } else {
             field.value = "";
         }
-
-        if(!checkFilled(fields)) hideBtn(btnContainer);
     })
+
+    if(!checkFilled(fields)) hideBtn(btnContainer);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -64,5 +64,5 @@ document.addEventListener('DOMContentLoaded', function () {
         checkFilled(fields) ? showBtn(actBtnContainer) : hideBtn(actBtnContainer);
     });
 
-    xBtn.addEventListener('click', event => {resetFeilds(fields, actBtnContainer)});
+    xBtn.addEventListener('click', event => {resetFields(fields, actBtnContainer)});
 })

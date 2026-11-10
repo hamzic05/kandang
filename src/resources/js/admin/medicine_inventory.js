@@ -5,7 +5,7 @@
  * @returns
  */
 function uncheckAll(elements, selectAllWrp) {
-    if(!(elements instanceof NodeList) || ! selectAllWrp) return;
+    if(!(elements instanceof NodeList) || !selectAllWrp) return;
     elements.forEach(elemen => elemen.checked = false);
     selectAllWrp.querySelector("#select_all_checkbox").checked = false;
 }

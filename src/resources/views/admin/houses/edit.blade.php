@@ -1,10 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-    <x-partials.admin.header>
-        <x-slot:page_header>Informasi Kandang Ayam</x-slot:page_header>
-        <x-slot:page_title>Kandang Ayam</x-slot:page_title>
-    </x-partials.admin.header>
+    <x-partials.admin.header header="Informasi Kandang Ayam" title="Kandang Ayam"/>
     <x-partials.admin.breadcrumb />
 
     <section data-inventory aria-label="Kandang" class="rounded-2xl border border-garis bg-white p-[18px]">
