@@ -2,7 +2,8 @@
 
 @section('content')
     <x-partials.admin.header header="Lengkapi informasi obat untuk menambah persediaan" title="Tambah obat"/>
-    
+    <x-partials.admin.breadcrumb />
+
     <form id="create_form" data-create action="" method="POST">
         @csrf
         <div class="flex flex-col gap-[20px]">

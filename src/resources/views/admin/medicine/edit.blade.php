@@ -2,7 +2,8 @@
 
 @section('content')
     <x-partials.admin.header header="Perbarui informasi obat pada inventaris kandang" title="Edit obat"/>
-
+    <x-partials.admin.breadcrumb />
+    
     <form id="edit_form" data-edit action="" method="POST">
         @csrf
         @method('PUT')

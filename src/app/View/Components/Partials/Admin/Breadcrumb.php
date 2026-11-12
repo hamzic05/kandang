@@ -67,9 +67,27 @@ class Breadcrumb extends Component
                 ['title' => 'Pakan', 'url' => null],
             ],
 
-            'admin.medicine.*' => [
+            'admin.medicine.index' => [
                 ['title' => 'Pakan dan Obat', 'url' => null],
                 ['title' => 'Obat', 'url' => null],
+            ],
+
+            'admin.medicine.create' => [
+                ['title' => 'Pakan dan Obat', 'url' => null],
+                ['title' => 'Obat', 'url' => route('admin.medicine.index')],
+                ['title' => 'Tambah obat', 'url' => null],
+            ],
+
+            'admin.medicine.edit' => [
+                ['title' => 'Pakan dan Obat', 'url' => null],
+                ['title' => 'Obat', 'url' => route('admin.medicine.index')],
+                ['title' => 'Edit obat', 'url' => null],
+            ],
+
+            'admin.medicine.show' => [
+                ['title' => 'Pakan dan Obat', 'url' => null],
+                ['title' => 'Obat', 'url' => route('admin.medicine.index')],
+                ['title' => 'Detail obat', 'url' => null],
             ],
 
             'admin.vitamin.*' => [

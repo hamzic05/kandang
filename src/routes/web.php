@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\Chickens\ChickenController;
 use App\Http\Controllers\Admin\Zone\ZoneChickenController;
 use App\Http\Controllers\Admin\Houses\HouseController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\Medicine\HistoryController;
 use App\Http\Controllers\Admin\Medicine\MedicineController;
+use App\Http\Controllers\Admin\Medicine\ScheduleController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\RegisteredGoogleController;
 
@@ -42,7 +44,9 @@ Route::prefix('admin')
         //zone
         Route::resource('zones', ZoneChickenController::class);
         //medicine
-    Route::get('medicine/inventory', [MedicineController::class, 'inventory'])
-        ->name('medicine.inventory');
+        Route::prefix('medicine')->name('medicine.')->group(function () {
+            Route::resource('schedules', ScheduleController::class);
+            Route::resource('history', HistoryController::class);
+        });
         Route::resource('medicine', MedicineController::class);
     });
