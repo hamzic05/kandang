@@ -33,7 +33,7 @@ class MedicineController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.medicine.show');
+        return view('admin.medicine.showv2');
     }
 
     /**

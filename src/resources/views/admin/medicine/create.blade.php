@@ -58,6 +58,20 @@
                     </div>
                 </div>
             </section>
+
+            <section class="p-[18px] flex flex-col gap-10 rounded-2xl border bg-white border-gray-100 shadow-[0_2px_16px_rgba(0,0,0,0.10)]">
+                <div class="grid grid-cols-1 lg:flex gap-y-5 gap-x-20">
+                    <x-admin.medicine.section_header number="2" title="Informasi Tambahan" icon="fa-cubes" icon_color="text-amber-600"/>
+        
+                    <div class="flex-1">
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div class="">
+                                <x-ui.input label="Foto obat" name="image" type="file" accept="image/*" class="peer sr-only"></x-ui.input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     
             <div id="act_btn_container" class="py-[18px] rounded-2xl transition-all duration-300 ease-out transform opacity-0 translate-y-2 pointer-events-none">
                 <div class="flex justify-between">

@@ -35,8 +35,8 @@
 
                 <div id="medicine_container" class="">
                     <div data-dash="medicines" class="flex flex-col">
-                        <x-admin.medicine.item :id="1" name="Vitamin B Complex" type="Vitamin" stock="12 botol" :is_active="true"/>
-                        <x-admin.medicine.item :id="2" name="Vitamin C Complex" type="Vitamin" stock="0 botol" :is_active="false"/>
+                        <x-admin.medicine.item :id="1" img="images (3).jpg" name="Vitamin B Complex" type="Vitamin" stock="12 botol" :is_active="true"/>
+                        <x-admin.medicine.item :id="2" img="images (3).jpg" name="Vitamin C Complex" type="Vitamin" stock="0 botol" :is_active="false"/>
                     </div>
                 </div>
                 <x-globals.confirm_del/>
