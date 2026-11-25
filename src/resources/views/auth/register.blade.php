@@ -18,6 +18,16 @@
                     </div>
 
                     <x-ui.button name="btn_submit" value="register" type="submit" label="Registrasi" class="w-full justify-center bg-hijau hover:bg-tinta text-white"/>
+
+                    <div class="divider">
+                        <div class="flex items-center gap-1">
+                            <div class="border border-stone-500 flex-1 h-0"></div>
+                            <p class="text-md">atau</p>
+                            <div class="border border-stone-500 flex-1 h-0"></div>
+                        </div>
+                    </div>
+
+                    <x-ui.a_button route="register.google" src="images/brands/google.svg.svg" name="Lanjut dengan Google" class="gap-2 bg-hijau hover:bg-tinta text-white"/>
                 </form>
             </div>
         </div>

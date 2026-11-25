@@ -2,6 +2,7 @@
 
 @section('content')
     <x-partials.admin.header header="Informasi lengkap persediaan obat" title="Detail obat"/>
+    <x-partials.admin.breadcrumb />
 
     <div class="p-6 md:p-8 rounded-2xl border border-garis bg-white shadow-[0_2px_16px_rgba(0,0,0,0.08)] overflow-hidden">
         <div class="flex flex-col gap-10">
@@ -96,7 +97,7 @@
     
             <div class="">
                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between gap-3">
-                    <x-ui.a_button route="admin.medicine.inventory" icon="fa-arrow-left" name="Halaman inventaris" class="gap-2"/>
+                    <x-ui.a_button route="admin.medicine.index" icon="fa-arrow-left" name="Kembali" class="gap-2"/>
                     <x-ui.a_button route="admin.medicine.edit" :params="[1]" icon="fa-pen-to-square" name="Edit obat" class="gap-2 text-white bg-hijau border border-tinta hover:bg-tinta hover:border-stone-400"/>
                 </div>
             </div>

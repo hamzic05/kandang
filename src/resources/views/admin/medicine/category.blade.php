@@ -11,7 +11,7 @@
 <div class="flex justify-between items-center">
     <nav class="flex flex-wrap gap-2.5">
         @foreach ($categories as $category => $label)
-            <x-ui.a_button route="admin.medicine.inventory" 
+            <x-ui.a_button route="admin.medicine.index" 
             :params="['category' => $category]" 
             data-category="{{ $category }}"
             :aria-current="$activeCategory === $category ? 'page' : null"

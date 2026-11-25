@@ -4,12 +4,12 @@
  */
 function handlePasswordVisibility(event) {
     const toggleTarget = event.target.closest(
-        "#password_toggle, #password-confirmation_toggle",
+        "#password_toggle, #password_confirmation_toggle",
     );
 
     if (!toggleTarget) return;
     let fPassId =
-        toggleTarget.id === "password_toggle" ? "#password" : "#password-confirmation";
+        toggleTarget.id === "password_toggle" ? "#password" : "#password_confirmation";
 
     const fPassSelectd = document.querySelector(fPassId);
     if (!fPassSelectd) return;

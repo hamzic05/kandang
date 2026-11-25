@@ -34,21 +34,7 @@
                 </div>
             </div>
 
-            <a href="{{ route('register.google') }}" class="block h-11">
-                <div class="h-full bg-secondary rounded-lg hover:bg-primary transition-colors">
-                    <div
-                        class="h-full w-full flex justify-center py-2.5 bg-secondary rounded-lg hover:bg-primary transition-colors  cursor-pointer">
-                        <div class="h-full w-fit flex gap-2 items-center">
-                            <div class="w-fit h-full overflow-hidden">
-                                <img src="{{ asset('images/brands/google.svg.svg') }}" alt=""
-                                    class="w-full h-full object-cover">
-                            </div>
-
-                            <p class=" text-md font-bold tracking-tight text-white">Lanjut dengan Google</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <x-ui.a_button route="register.google" src="images/brands/google.svg.svg" name="Lanjut dengan Google" class="gap-2 bg-hijau hover:bg-tinta text-white"/>
         </div>
     </div>
 @endsection

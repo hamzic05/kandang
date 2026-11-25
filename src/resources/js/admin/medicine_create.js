@@ -1,15 +1,19 @@
 /**
- * 
  * @param {NodeList} fields 
  * @returns {boolean}
  */
 function checkFilled(fields) {
     if(!(fields instanceof NodeList)) return;
-    const isFilled = [...fields].some(field => {
+    return [...fields].some(field => {
         if(field.type === "checkbox" || field.type === "radio") return field.checked;
         return field.value.trim() !== "";
     })
-    return isFilled;
+}
+
+function dropImage() {
+    const zone = document.querySelector('[data-dropzone]');
+    if(!zone) return;
+    zone.dispatchEvent(new CustomEvent('dropzone:clear'));
 }
 
 /**
@@ -23,6 +27,12 @@ function showBtn(btnContainer) {
     btnContainer.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
 }
 
+
+/**
+ * 
+ * @param {HTMLElement} btnContainer 
+ * @returns 
+ */
 function hideBtn(btnContainer) {
     if(!btnContainer) return;
     btnContainer.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
@@ -39,6 +49,10 @@ function resetFields(fields, btnContainer) {
     fields.forEach(field => {
         if(field.type === "checkbox" || field.type === "radio"){
             field.checked = false;
+        } else if(field.type === 'file'){
+            if(field.hasAttribute('accept')){
+                if(field.getAttribute('accept') === 'image/*') dropImage();
+            }
         } else {
             field.value = "";
         }
@@ -56,13 +70,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const fields = form.querySelectorAll(".field");
     if(!actBtnContainer || !xBtn || !fields) return;
     
-    form.addEventListener('input', event => {
+    form.addEventListener('input', () => {
         checkFilled(fields) ? showBtn(actBtnContainer) : hideBtn(actBtnContainer);
     });
 
-    form.addEventListener('change', event => {
+    form.addEventListener('create:fields-check', () => {
         checkFilled(fields) ? showBtn(actBtnContainer) : hideBtn(actBtnContainer);
     });
 
-    xBtn.addEventListener('click', event => {resetFields(fields, actBtnContainer)});
+    form.addEventListener('change', () => {
+        checkFilled(fields) ? showBtn(actBtnContainer) : hideBtn(actBtnContainer);
+    });
+
+    xBtn.addEventListener('click', () => {resetFields(fields, actBtnContainer)});
 })
