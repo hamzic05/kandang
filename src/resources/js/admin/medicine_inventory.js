@@ -53,6 +53,7 @@ function hideDelete(el) {
 }
 
 /**
+ * 
  * @param {HTMLElement} modal 
  */
 function handleCancle(modal) {
@@ -62,6 +63,7 @@ function handleCancle(modal) {
 }
 
 /**
+ * 
  * @param {HTMLElement} modal
  * @param {Number} deleteCount
  * @returns 
@@ -80,10 +82,11 @@ function showModalDelete(modal, deleteCount) {
 
     const cancleBtn = modal.querySelector("#confirm_cancel_delete");
     if(!cancleBtn) return;
-    cancleBtn.addEventListener('click', () => {handleCancle(modal)});
+    cancleBtn.addEventListener('click', event => {handleCancle(modal)});
 }
 
 /**
+ * 
  * @param {HTMLElement} selectAllWrp 
  * @param {HTMLElement} delEl 
  * @param {NodeList} elements 
@@ -103,6 +106,7 @@ function handleSelectAll(selectAllWrp, delEl, elements) {
 }
  
 /**
+ * 
  * @param {HTMLElement} toggle
  * @param {NodeList} checkboxItems
  * @param {HTMLElement} deleteBtn
@@ -143,11 +147,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const medicineContainer = root.querySelector("#medicine_container");
     if(!toggleMode || !deleteBtn || checkboxItems === 0 || !medicineContainer) return;
 
-    toggleMode.addEventListener('click', () => {handleToggleMode(toggleMode, checkboxItems, deleteBtn, selectAllWrp)});
-    medicineContainer.addEventListener('change', () => {
+    toggleMode.addEventListener('click', event => {handleToggleMode(toggleMode, checkboxItems, deleteBtn, selectAllWrp)});
+    medicineContainer.addEventListener('change', event => {
         checkChecked(checkboxItems) ? showDelete(deleteBtn) : hideDelete(deleteBtn);
     });
-    selectAllWrp.addEventListener('change', () => {handleSelectAll(selectAllWrp, deleteBtn, checkboxItems)});
+    selectAllWrp.addEventListener('change', event => {handleSelectAll(selectAllWrp, deleteBtn, checkboxItems)});
     deleteBtn.addEventListener('click', event => {
         event.preventDefault();
         handleDelete(checkboxItems, modalDelete);

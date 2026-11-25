@@ -3,9 +3,7 @@ import './auth';
 import './admin/sidebar';
 import './admin/medicine_search';
 import './admin/medicine_create';
-import './admin/medicine_edit'
 import './admin/medicine_inventory';
-import './admin/upimg';
 
 document.addEventListener("DOMContentLoaded", function () { 
   /**

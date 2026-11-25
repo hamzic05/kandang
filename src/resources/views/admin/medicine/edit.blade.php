@@ -2,8 +2,7 @@
 
 @section('content')
     <x-partials.admin.header header="Perbarui informasi obat pada inventaris kandang" title="Edit obat"/>
-    <x-partials.admin.breadcrumb />
-    
+
     <form id="edit_form" data-edit action="" method="POST">
         @csrf
         @method('PUT')
@@ -14,8 +13,8 @@
                     
                     <div class="flex-1">
                         <div class="grid grid-cols-2 gap-2.5">
-                            <x-ui.input data-origin="" label="Kode" name="code"></x-ui.input>
-                            <x-ui.input data-origin="" label="Nama obat" name="name"></x-ui.input>
+                            <x-ui.input label="Kode" name="code"></x-ui.input>
+                            <x-ui.input label="Nama obat" name="name"></x-ui.input>
                             <x-ui.select label="Tipe" name="type">
                                 <x-slot:options>
                                     <option value="" disabled selected>Pilih tipe</option>
@@ -59,25 +58,11 @@
                     </div>
                 </div>
             </section>
-
-            <section class="p-[18px] flex flex-col gap-10 rounded-2xl border bg-white border-gray-100 shadow-[0_2px_16px_rgba(0,0,0,0.10)]">
-                <div class="grid grid-cols-1 lg:flex gap-y-5 gap-x-20">
-                    <x-admin.medicine.section_header number="2" title="Informasi Tambahan" icon="fa-cubes" icon_color="text-amber-600"/>
-        
-                    <div class="flex-1">
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <div class="">
-                                <x-ui.input label="Foto obat" name="image" type="file" current_img="images (3).jpg" accept="image/*" class="peer sr-only"></x-ui.input>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
     
             <div id="act_btn_container" class="py-[18px] rounded-2xl transition-all duration-300 ease-out transform opacity-0 translate-y-2 pointer-events-none">
                 <div class="flex justify-between">
                     <x-ui.div_button id="cancle_btn" icon="fa-xmark" name="Batalkan perubahan"/>
-                    <x-ui.button icon="fa-floppy-disk" label="Simpan perubahan" class="text-white bg-hijau hover:bg-tinta"/>
+                    <x-ui.button icon="fa-floppy-disk" name="Simpan perubahan"/>
                 </div>
             </div>
         </div>

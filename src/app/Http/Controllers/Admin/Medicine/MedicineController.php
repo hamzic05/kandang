@@ -10,7 +10,7 @@ class MedicineController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         return view('admin.medicine.medicine');
     }
@@ -33,7 +33,7 @@ class MedicineController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.medicine.showv2');
+        return view('admin.medicine.show');
     }
 
     /**
@@ -55,5 +55,10 @@ class MedicineController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function inventory(Request $request)
+    {
+        return view('admin.medicine.inventory');
     }
 }

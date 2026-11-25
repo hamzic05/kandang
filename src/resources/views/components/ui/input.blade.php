@@ -1,16 +1,12 @@
 @props([
     'name' => '',
     'label' => '',
-    'type' => 'text',
-    'current_img' => null
+    'type' => 'text'
 ])
 
 <div class="mb-3.5">
-    @if (!empty($label))
-        <label for="{{ $name }}" class="block text-xs font-semibold text-stone-800 mb-1.5">{{ $label }}</label>
-    @endif
-    
-    <div @if ($type === 'file') data-dropzone="{{ $name }}" @endif class="relative {{ $type === 'file' ?  'max-w-[220px]' : ''}}">
+    <label for="{{ $name }}" class="block text-xs font-semibold text-stone-800 mb-1.5">{{ $label }}</label>
+    <div class="relative">
         <input id="{{ $name }}" name="{{ $name }}" type="{{ $type }}"
             @if ($type !== 'password') value="{{ old($name) }}" @endif
             
@@ -21,8 +17,6 @@
 
         @if ($type === 'password')
             <i id="{{ $name }}_toggle" class="fa-solid fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2"></i>
-        @elseif ($type === 'file')
-            <x-globals.upimg :name="$name" :current_img="$current_img"/>
         @endif
 
     </div>

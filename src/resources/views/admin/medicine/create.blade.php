@@ -2,8 +2,7 @@
 
 @section('content')
     <x-partials.admin.header header="Lengkapi informasi obat untuk menambah persediaan" title="Tambah obat"/>
-    <x-partials.admin.breadcrumb />
-
+    
     <form id="create_form" data-create action="" method="POST">
         @csrf
         <div class="flex flex-col gap-[20px]">
@@ -54,20 +53,6 @@
                                 </x-slot:options>
                             </x-ui.select>
                             <x-ui.textarea label="Deskripsi" name="description"></x-ui.textarea>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="p-[18px] flex flex-col gap-10 rounded-2xl border bg-white border-gray-100 shadow-[0_2px_16px_rgba(0,0,0,0.10)]">
-                <div class="grid grid-cols-1 lg:flex gap-y-5 gap-x-20">
-                    <x-admin.medicine.section_header number="2" title="Informasi Tambahan" icon="fa-cubes" icon_color="text-amber-600"/>
-        
-                    <div class="flex-1">
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <div class="">
-                                <x-ui.input label="Foto obat" name="image" type="file" accept="image/*" class="peer sr-only"></x-ui.input>
-                            </div>
                         </div>
                     </div>
                 </div>
