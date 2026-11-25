@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+/* Tailwind CSS v4 directive; not a standard CSS at-rule. */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source "../views";
@@ -83,6 +85,5 @@ input[aria-invalid="true"] {
 @utility tautan-footer {
   @apply rounded-sm transition-colors hover:text-tinta focus-visible:text-tinta focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau;
 }
-
 
 /* bagian akhir index dashboard admin */

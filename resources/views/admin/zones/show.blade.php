@@ -3,7 +3,11 @@
 @section('content')
     <x-partials.admin.header header="Informasi Detail Zona Kandang Ayam" title="Detail Zona Kandang Ayam" />
     <x-partials.admin.breadcrumb />
-
+    @if(session('success'))
+        <div class="mb-4 rounded-lg bg-hijau/10 px-4 py-3 text-sm font-medium text-hijau">
+            {{ session('success') }}
+        </div>
+    @endif
     <section data-inventory aria-label="Kandang" class="p-[18px] border border-garis rounded-2xl overflow-hidden bg-white">
         <header class="mb-5">
             <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
@@ -69,30 +73,30 @@
                                                 {{ $house->capacity}}
                                             </td>
                                             <!--<td class="px-4 py-4">
-                                                                            @if ($house->status == 1)
-                                                                            <span
-                                                                                    class="inline-flex items-center gap-2 rounded-full bg-hijau/10 px-3 py-1 text-xs font-medium text-hijau">
-                                                                                    <i class="fa-solid fa-layer-group"></i>
-                                                                                {{ "Aktif" }}
-                                                                                </span>
-                                                                            @else
-                                                                            <span
-                                                                                    class="inline-flex items-center gap-2 rounded-full bg-merah/10 px-3 py-1 text-xs font-medium text-merah">
-                                                                                    <i class="fa-solid fa-layer-group"></i>
-                                                                                {{ "Tidak Aktif" }}
-                                                                                </span>
-                                                                            @endif
-                                                                        </td>-->
+                                                                                                @if ($house->status == 1)
+                                                                                                <span
+                                                                                                        class="inline-flex items-center gap-2 rounded-full bg-hijau/10 px-3 py-1 text-xs font-medium text-hijau">
+                                                                                                        <i class="fa-solid fa-layer-group"></i>
+                                                                                                    {{ "Aktif" }}
+                                                                                                    </span>
+                                                                                                @else
+                                                                                                <span
+                                                                                                        class="inline-flex items-center gap-2 rounded-full bg-merah/10 px-3 py-1 text-xs font-medium text-merah">
+                                                                                                        <i class="fa-solid fa-layer-group"></i>
+                                                                                                    {{ "Tidak Aktif" }}
+                                                                                                    </span>
+                                                                                                @endif
+                                                                                            </td>-->
                                             <td class="px-4 py-4">
-                                                <form action="#" method="POST"
+                                                <form action="{{ route('admin.zones.changeStatus', $house->id) }}" method="POST"
                                                     class="form-status">
                                                     @csrf
                                                     @method('PATCH')
 
                                                     <select name="status" class="status-select cursor-pointer rounded-full border-0
-                                                        px-3 py-1 text-xs font-medium shadow-sm
-                                                        focus:ring-2 focus:ring-hijau/30
-                                                        {{ $house->status == 1
+                                                                            px-3 py-1 text-xs font-medium shadow-sm
+                                                                            focus:ring-2 focus:ring-hijau/30
+                                                                            {{ $house->status == 1
                             ? 'bg-hijau/10 text-hijau'
                             : 'bg-merah/10 text-merah' }}" onchange="ubahStatus(this)">
 
@@ -134,19 +138,19 @@
 
     </section>
     <script>
-    function ubahStatus(select) {
+        function ubahStatus(select) {
 
-        const form = select.closest('form');
+            const form = select.closest('form');
 
-        const konfirmasi = confirm(
-            'Apakah Anda yakin ingin mengubah status zona kandang?'
-        );
+            const konfirmasi = confirm(
+                'Apakah Anda yakin ingin mengubah status zona kandang?'
+            );
 
-        if (konfirmasi) {
-            form.submit();
-        } else {
-            location.reload();
+            if (konfirmasi) {
+                form.submit();
+            } else {
+                location.reload();
+            }
         }
-    }
-</script>
+    </script>
 @endsection
