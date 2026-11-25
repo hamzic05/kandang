@@ -40,13 +40,20 @@ Route::prefix('admin')
         //house
         Route::resource('houses', HouseController::class);
         //zone
-          Route::get('zones/contiguous/{id}', [ZoneChickenController::class, 'contiguous']
+        Route::get(
+            'zones/contiguous/{id}',
+            [ZoneChickenController::class, 'contiguous']
         )->name('zones.contiguous');
-        
+
+        Route::patch(
+            'zones/changeStatus/{id}/status',
+            [ZoneChickenController::class, 'changeStatus']
+        )->name('zones.changeStatus');
+
         Route::resource('zones', ZoneChickenController::class);
-        
+
         //medicine
-    Route::get('medicine/inventory', [MedicineController::class, 'inventory'])
-        ->name('medicine.inventory');
+        Route::get('medicine/inventory', [MedicineController::class, 'inventory'])
+            ->name('medicine.inventory');
         Route::resource('medicine', MedicineController::class);
     });

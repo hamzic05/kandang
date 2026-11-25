@@ -37,7 +37,7 @@ class ZoneChickenController extends Controller
     public function create()
     {
         $houses_id = Houses::orderBy('name')->get(['id', 'name', 'code']);
-        $checkZone = ZoneChicken::pluck('house_id')->map(fn ($id) => (string) $id)->all();
+        $checkZone = ZoneChicken::pluck('house_id')->map(fn($id) => (string) $id)->all();
         return view('admin.zones.create', compact('houses_id', 'checkZone'));
     }
 
@@ -112,15 +112,30 @@ class ZoneChickenController extends Controller
 
     public function contiguous($id)
     {
-$houses = Houses::select('id', 'code', 'name', 'location')
-    ->where('id', $id)
-    ->firstOrFail();
+        $houses = Houses::select('id', 'code', 'name', 'location')
+            ->where('id', $id)
+            ->firstOrFail();
         return view('admin.zones.contiguous', compact('houses'));
     }
 
     public function update(Request $request, $id)
     {
 
+    }
+
+    public function changeStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:0,1'
+        ]);
+
+        $zone = ZoneChicken::select('id','status') 
+        ->findOrFail($id);
+        
+        $zone->status = $request->status;
+        $zone->save();
+
+        return back()->with('success', 'Status zona berhasil diperbarui.');
     }
 
     public function destroy($id)
