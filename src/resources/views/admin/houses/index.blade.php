@@ -1,7 +1,7 @@
 @extends('admin.index')
 
 @section('content')
-    <x-partials.admin.header header="Informasi Kandang Ayam" title="Kandang Ayam"/>
+    <x-partials.admin.header header="Informasi Kandang Ayam" title="Kandang Ayam" />
     <x-partials.admin.breadcrumb />
 
     @if(session('success'))
@@ -14,10 +14,10 @@
             <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
 
                 <a href="{{ route('admin.houses.create') }}" class="inline-flex shrink-0 items-center justify-center gap-2
-                              rounded-[10px] bg-hijau px-4 py-3
-                              text-sm font-semibold text-white
-                              whitespace-nowrap transition-colors hover:bg-tinta
-                              sm:justify-self-end">
+                                  rounded-[10px] bg-hijau px-4 py-3
+                                  text-sm font-semibold text-white
+                                  whitespace-nowrap transition-colors hover:bg-tinta
+                                  sm:justify-self-end">
 
                     <i class="fa-solid fa-plus"></i>
                     <span>Tambah Kandang</span>
@@ -105,9 +105,9 @@
                                     <div class="flex items-center justify-end gap-2">
 
                                         <a href="{{ route('admin.houses.edit', $house->id) }}" title="Ubah Kandang"
-   class="flex h-8 w-8 items-center justify-center rounded-lg text-teks-redup hover:bg-krem hover:text-hijau">
-    <i class="fa-solid fa-pen"></i>
-</a>
+                                            class="flex h-8 w-8 items-center justify-center rounded-lg text-teks-redup hover:bg-krem hover:text-hijau">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
                                         <form action="{{ route('admin.houses.destroy', $house->id) }}" method="POST"
                                             onsubmit="return confirm('Hapus kandang ini?')">
                                             @csrf
@@ -121,9 +121,15 @@
                                     </div>
                                 </td>
                             </tr>
-
                         @empty
-                            <p>Data tidak ditemukan</p>
+                            <tr class="hover:bg-krem/30">
+                                <td class="px-4 py-4">
+                                    <p>Data tidak ditemukan</p>
+                                </td>
+
+
+                            </tr>
+
                         @endforelse
 
                     </tbody>

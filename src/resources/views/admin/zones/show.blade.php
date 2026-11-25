@@ -69,7 +69,19 @@
                                     {{ $house->capacity}}
                                 </td>
                                 <td class="px-4 py-4">
-                                    {{ $house->status}}
+                                    @if ($house->status == 1)
+                                    <span
+                                            class="inline-flex items-center gap-2 rounded-full bg-hijau/10 px-3 py-1 text-xs font-medium text-hijau">
+                                            <i class="fa-solid fa-layer-group"></i>
+                                        {{ "Aktif" }}
+                                        </span>
+                                    @else
+                                    <span
+                                            class="inline-flex items-center gap-2 rounded-full bg-merah/10 px-3 py-1 text-xs font-medium text-merah">
+                                            <i class="fa-solid fa-layer-group"></i>
+                                        {{ "Tidak Aktif" }}
+                                        </span>
+                                    @endif
                                 </td>
                                 <td class="px-4 py-4">
                                     {{ $house->description}}

@@ -15,10 +15,10 @@
 
 
                 <a href="{{ route('admin.zones.create') }}" class="inline-flex shrink-0 items-center justify-center gap-2
-                          rounded-[10px] bg-hijau px-4 py-3
-                          text-sm font-semibold text-white
-                          whitespace-nowrap transition-colors hover:bg-tinta
-                          sm:justify-self-end">
+                              rounded-[10px] bg-hijau px-4 py-3
+                              text-sm font-semibold text-white
+                              whitespace-nowrap transition-colors hover:bg-tinta
+                              sm:justify-self-end">
 
                     <i class="fa-solid fa-plus"></i>
                     <span>Tentukan Zona Kandang</span>
@@ -35,7 +35,8 @@
                         <div class="flex items-center justify-between border-b border-[#26352b] py-4">
                             <div class="min-w-0">
                                 <h4 class="font-bold text-[#2f5d3a]">
-                                    <a href="{{ route('admin.zones.show', $zone->house_id) }}" class="text-base text-hijau font-bold hover:underline transition-colors">{{ $room_column . " " . Str::substr($zone->code, 0, 1) }}</a>                             
+                                    <a href="{{ route('admin.zones.show', $zone->house_id) }}"
+                                        class="text-base text-hijau font-bold hover:underline transition-colors">{{ $room_column . " " . Str::substr($zone->code, 0, 1) }}</a>
                                 </h4>
                                 <p class="mt-1 text-sm text-gray-700">
                                     {{ $zone_code . " " . Str::substr($zone->code, 0, 1) }}
@@ -43,20 +44,23 @@
                             </div>
 
                             <div class="ml-4 flex shrink-0 items-center gap-3">
-                                <button type="button" class="text-[#2f5d3a] transition hover:text-[#07140C]"
-                                    title="Edit persediaan">
+                                <a href="{{ route('admin.zones.contiguous',$zone->house_id) }}"
+                                    class="text-[#2f5d3a] transition hover:text-[#07140C]" title="Tambahkan Zona">
+
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor" stroke-width="2.5">
+
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M16.862 4.487l2.651 2.651M9 15l9.193-9.193a1.875 1.875 0 012.652 2.652L11.652 17.65 8 18l.348-3z" />
+
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M19 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5" />
                                     </svg>
-                                </button>
+                                </a>
 
                                 <div class="min-w-[80px] text-right">
                                     <p class="font-bold text-[#2f5d3a]">
-                                        {{ $zone->total_capacity . " Slot Kandang Ayam" }}
+                                        {{ $zone->total_capacity . " Zona Kandang Ayam" }}
                                     </p>
 
                                 </div>
@@ -72,7 +76,7 @@
 
                     <a href="#"
                         class="mt-3 block text-center text-sm font-bold text-[#1D3B2A] transition hover:text-[#6b8e23]">
-                        1 2  »
+                        1 2 »
                     </a>
                     <div class="flex items-center justify-between border-t border-garis bg-white px-5 py-3">
                         <span class="text-xs text-teks-redup">
