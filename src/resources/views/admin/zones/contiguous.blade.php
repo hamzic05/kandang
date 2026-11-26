@@ -1,61 +1,24 @@
-<?php $__env->startSection('content'); ?>
-  <?php
-    $prefix = rtrim($houses->code, '0123456789');          // A1 → A
-    $nomorTerakhir = (int) preg_replace('/\D+/', '', (string) $endnumber);   // "A100" atau 100 → 100
-  ?>
+@extends('admin.index')
 
-  <?php if (isset($component)) { $__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2 = $attributes; } ?>
-<?php $component = App\View\Components\Partials\Admin\Header::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('partials.admin.header'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Partials\Admin\Header::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['header' => 'Informasi Zona Kandang Ayam','title' => 'Zona Kandang Ayam']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2)): ?>
-<?php $attributes = $__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2; ?>
-<?php unset($__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2)): ?>
-<?php $component = $__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2; ?>
-<?php unset($__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2); ?>
-<?php endif; ?>
-  <?php if (isset($component)) { $__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87 = $attributes; } ?>
-<?php $component = App\View\Components\Partials\Admin\Breadcrumb::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('partials.admin.breadcrumb'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\App\View\Components\Partials\Admin\Breadcrumb::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes([]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87)): ?>
-<?php $attributes = $__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87; ?>
-<?php unset($__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87)): ?>
-<?php $component = $__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87; ?>
-<?php unset($__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87); ?>
-<?php endif; ?>
+@section('content')
+  @php
+    $nomorTerakhir = (int) preg_replace('/\D+/', '', (string) $endnumber);   // "A100" atau 100 → 100
+  @endphp
+
+  <x-partials.admin.header header="Informasi Zona Kandang Ayam" title="Zona Kandang Ayam" />
+  <x-partials.admin.breadcrumb />
 
   <section data-inventory aria-label="Tambah jumlah zona" class="rounded-2xl border border-garis bg-white p-[18px]">
 
   <header class="mb-5 flex flex-wrap items-center justify-between gap-3">
     <div>
       <h3 class="font-display text-xl font-semibold text-tinta">Tambah Zona Dalam Kandang</h3>
-      <p class="mt-0.5 text-sm text-teks-redup"><?php echo e($houses->houses->code); ?> · <?php echo e($houses->houses->name); ?></p>
+      <p class="mt-0.5 text-sm text-teks-redup">{{ $house->code }} · {{ $house->name }}</p>
     </div>
   </header>
 
-  <form id="form-tambah-zona" action="<?php echo e(route('admin.houses.zones.additionalZone', $houses->house_id)); ?>" method="post" novalidate class="w-full space-y-6">
-    <?php echo csrf_field(); ?>
+  <form id="form-tambah-zona" action="{{ route('admin.houses.zones.additionalZone', $house->id) }}" method="post" novalidate class="w-full space-y-6">
+    @csrf
 
     <!-- 1. Pilih kamar -->
     <div class="space-y-4">
@@ -64,39 +27,32 @@
       <div class="sm:max-w-sm">
         <label for="tz-prefix" class="mb-1.5 block text-sm font-semibold text-teks">Kamar</label>
         <select id="tz-prefix" name="prefix"
-          aria-invalid="<?php echo e($errors->has('prefix') ? 'true' : 'false'); ?>"
+          aria-invalid="{{ $errors->has('prefix') ? 'true' : 'false' }}"
           class="block w-full rounded-[10px] border border-garis-tua bg-white px-3.5 py-2.5 text-sm text-teks
                  focus:border-hijau focus:outline-2 focus:outline-hijau/25
                  aria-invalid:border-red-400">
-          <option value="<?php echo e($prefix); ?>">Kamar <?php echo e($prefix); ?></option>
+          <option value="{{ $prefix }}">Kamar {{ $prefix }}</option>
         </select>
-        <?php $__errorArgs = ['prefix'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <p class="mt-1 text-xs font-medium text-merah"><?php echo e($message); ?></p> <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+        @error('prefix') <p class="mt-1 text-xs font-medium text-merah">{{ $message }}</p> @enderror
       </div>
 
-      <div data-ringkasan="<?php echo e($prefix); ?>" data-nama="Kamar <?php echo e($prefix); ?>" data-terakhir="<?php echo e($nomorTerakhir); ?>"
+      <div data-ringkasan="{{ $prefix }}" data-nama="Kamar {{ $prefix }}" data-terakhir="{{ $nomorTerakhir }}"
            class="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <div class="rounded-kartu border border-garis bg-white px-4 py-3">
           <div class="text-sm text-teks-redup">Total posisi</div>
-          <div class="angka-judul text-[28px] leading-tight text-tinta"><?php echo e($count); ?></div>
+          <div class="angka-judul text-[28px] leading-tight text-tinta">{{ $count }}</div>
         </div>
         <div class="rounded-kartu border border-garis bg-white px-4 py-3">
           <div class="text-sm text-teks-redup">Aktif</div>
-          <div class="angka-judul text-[28px] leading-tight text-hijau"><?php echo e($active); ?></div>
+          <div class="angka-judul text-[28px] leading-tight text-hijau">{{ $active }}</div>
         </div>
-        <div class="rounded-kartu border px-4 py-3 <?php echo e($nonactive > 0 ? 'border-kuning-batang/50 bg-kuning-muda' : 'border-garis bg-white'); ?>">
+        <div class="rounded-kartu border px-4 py-3 {{ $nonactive > 0 ? 'border-kuning-batang/50 bg-kuning-muda' : 'border-garis bg-white' }}">
           <div class="text-sm text-teks-redup">Nonaktif</div>
-          <div class="angka-judul text-[28px] leading-tight <?php echo e($nonactive > 0 ? 'text-kuning-tua' : 'text-tinta'); ?>"><?php echo e($nonactive); ?></div>
+          <div class="angka-judul text-[28px] leading-tight {{ $nonactive > 0 ? 'text-kuning-tua' : 'text-tinta' }}">{{ $nonactive }}</div>
         </div>
         <div class="rounded-kartu border border-garis bg-white px-4 py-3">
           <div class="text-sm text-teks-redup">Nomor terakhir</div>
-          <div class="angka-judul text-[28px] leading-tight text-tinta"><?php echo e($prefix); ?><?php echo e($nomorTerakhir); ?></div>
+          <div class="angka-judul text-[28px] leading-tight text-tinta">{{ $prefix }}{{ $nomorTerakhir }}</div>
         </div>
       </div>
     </div>
@@ -109,8 +65,8 @@ unset($__errorArgs, $__bag); ?>
       <div>
         <label for="tz-jumlah" class="mb-1.5 block text-sm font-semibold text-teks">Jumlah posisi baru</label>
         <div class="flex sm:max-w-xs">
-          <input id="tz-jumlah" type="number" min="1" max="500" name="jumlah" value="<?php echo e(old('jumlah')); ?>" placeholder="Contoh: 20" inputmode="numeric"
-            aria-invalid="<?php echo e($errors->has('jumlah') ? 'true' : 'false'); ?>"
+          <input id="tz-jumlah" type="number" min="1" max="500" name="jumlah" value="{{ old('jumlah') }}" placeholder="Contoh: 20" inputmode="numeric"
+            aria-invalid="{{ $errors->has('jumlah') ? 'true' : 'false' }}"
             class="block w-full rounded-[10px] rounded-r-none border border-garis-tua bg-white px-3.5 py-2.5 text-sm text-teks
               placeholder:text-teks-redup/70
               focus:border-hijau focus:outline-2 focus:outline-hijau/25
@@ -118,14 +74,7 @@ unset($__errorArgs, $__bag); ?>
           <span class="grid place-items-center rounded-r-[10px] border border-l-0 border-garis-tua bg-jalur px-3 text-sm text-teks-redup">posisi</span>
         </div>
         <p data-galat="tz-jumlah" hidden class="mt-1 text-xs font-medium text-merah">Isi jumlah 1 sampai 500.</p>
-        <?php $__errorArgs = ['jumlah'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <p class="mt-1 text-xs font-medium text-merah"><?php echo e($message); ?></p> <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+        @error('jumlah') <p class="mt-1 text-xs font-medium text-merah">{{ $message }}</p> @enderror
         <p class="mt-1 text-xs text-teks-redup">Maksimal 500 sekali tambah.</p>
 
         <div class="mt-3 flex flex-wrap gap-2" aria-label="Pilihan cepat">
@@ -140,31 +89,23 @@ unset($__errorArgs, $__bag); ?>
       <!-- Catatan (opsional, tersembunyi sampai tombol diklik) -->
       <div>
         <button type="button" id="tz-catatan-tombol" aria-controls="tz-catatan"
-          aria-expanded="<?php echo e(old('description') ? 'true' : 'false'); ?>"
+          aria-expanded="{{ old('description') ? 'true' : 'false' }}"
           class="rounded-full border border-garis-tua bg-white px-3.5 py-1.5 text-sm font-medium text-teks-lembut transition-colors hover:border-hijau hover:text-hijau focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau">
-          <?php echo e(old('description') ? '− Sembunyikan catatan' : '+ Tambah catatan'); ?>
-
+          {{ old('description') ? '− Sembunyikan catatan' : '+ Tambah catatan' }}
         </button>
 
-        <div id="tz-catatan" <?php if(! old('description') && ! $errors->has('description')): ?> hidden <?php endif; ?> class="mt-3 sm:max-w-md">
+        <div id="tz-catatan" @if (! old('description') && ! $errors->has('description')) hidden @endif class="mt-3 sm:max-w-md">
           <label for="tz-description" class="mb-1.5 block text-sm font-semibold text-teks">
             Catatan posisi baru <span class="font-normal text-teks-redup">(opsional)</span>
           </label>
           <textarea id="tz-description" name="description" rows="3" maxlength="255" placeholder="Contoh: Dekat pintu masuk"
-            aria-invalid="<?php echo e($errors->has('description') ? 'true' : 'false'); ?>"
+            aria-invalid="{{ $errors->has('description') ? 'true' : 'false' }}"
             class="block w-full resize-y rounded-[10px] border border-garis-tua bg-white px-3.5 py-2.5 text-sm text-teks
                    placeholder:text-teks-redup/70
                    focus:border-hijau focus:outline-2 focus:outline-hijau/25
-                   aria-invalid:border-red-400"><?php echo e($houses->description); ?></textarea>
+                   aria-invalid:border-red-400">{{ old('description', $deskripsiTerakhir) }}</textarea>
           <p class="mt-1 text-xs text-teks-redup">Dipakai untuk semua posisi baru. Maksimal 255 karakter.</p>
-          <?php $__errorArgs = ['description'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <p class="mt-1 text-xs font-medium text-merah"><?php echo e($message); ?></p> <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+          @error('description') <p class="mt-1 text-xs font-medium text-merah">{{ $message }}</p> @enderror
         </div>
       </div>
 
@@ -177,7 +118,7 @@ unset($__errorArgs, $__bag); ?>
 
     <!-- Tombol -->
     <div class="flex items-center justify-between gap-3 border-t border-garis pt-4">
-      <a href="<?php echo e(route('admin.zones.index')); ?>" class="inline-flex items-center justify-center rounded-[10px] px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau border border-garis-tua bg-white text-teks-lembut hover:bg-jalur">Batal</a>
+      <a href="{{ route('admin.zones.index') }}" class="inline-flex items-center justify-center rounded-[10px] px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau border border-garis-tua bg-white text-teks-lembut hover:bg-jalur">Batal</a>
       <button type="submit" class="inline-flex items-center justify-center rounded-[10px] px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijau bg-hijau text-white hover:bg-tinta">Tambahkan</button>
     </div>
   </form>
@@ -245,5 +186,4 @@ unset($__errorArgs, $__bag); ?>
     })();
   </script>
 </section>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /home/hamidjumasa/Documents/kandang/src/resources/views/admin/zones/contiguous.blade.php ENDPATH**/ ?>
+@endsection

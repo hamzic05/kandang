@@ -1,14 +1,18 @@
 @extends('admin.index')
 
 @section('content')
-    <x-partials.admin.header header="Informasi Detail Zona Kandang Ayam" title="Detail Zona Kandang Ayam"/>
+    <x-partials.admin.header header="Informasi Detail Zona Kandang Ayam" title="Detail Zona Kandang Ayam" />
     <x-partials.admin.breadcrumb />
-
+    @if(session('success'))
+        <div class="mb-4 rounded-lg bg-hijau/10 px-4 py-3 text-sm font-medium text-hijau">
+            {{ session('success') }}
+        </div>
+    @endif
     <section data-inventory aria-label="Kandang" class="p-[18px] border border-garis rounded-2xl overflow-hidden bg-white">
         <header class="mb-5">
             <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
 
-                           </div>
+            </div>
         </header>
 
         <div class="overflow-hidden rounded-xl border border-garis bg-white">
@@ -18,6 +22,9 @@
 
                     <thead class="bg-krem/60">
                         <tr>
+                            <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
+                                No
+                            </th>
                             <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
                                 Kode Kandang
                             </th>
@@ -34,7 +41,7 @@
                                 Kapasitas
                             </th>
                             <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
-                                Status 
+                                Status
                             </th>
                             <th class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-teks-redup">
                                 Deskripsi
@@ -43,41 +50,70 @@
                     </thead>
 
                     <tbody class="divide-y divide-garis">
-
+                        @php $no = 1; @endphp
                         @forelse ($houses as $house)
-                       
-                            <tr class="hover:bg-krem/30">
 
-                                <td class="px-5 py-4">
-                                    {{ $house->houses->code }}
-                                                                         
-                                </td>
+                                        <tr class="hover:bg-krem/30">
 
-                                <td class="px-4 py-4 text-teks-lembut">
-                                    {{ $house->houses->name }}
-                                </td>
+                                            <td class="px-4 py-4">
+                                                {{ $no++ }}
+                                            </td>
+                                            <td class="px-5 py-4">
+                                                {{ $house->houses->code }}
 
-                                <td class="px-4 py-4">
-                                 {{ $house->kode }}
-                                </td>
+                                            </td>
 
-                                <td class="px-4 py-4">
-                                    {{ $house->nama }}
-                                </td>
-                                </td>
-                                <td class="px-4 py-4">
-                                    {{ $house->capacity}}
-                                </td>
-                                <td class="px-4 py-4">
-                                    {{ $house->status}}
-                                </td>
-                                <td class="px-4 py-4">
-                                    {{ $house->description}}
+                                            <td class="px-4 py-4 text-teks-lembut">
+                                                {{ $house->houses->name }}
+                                            </td>
+
+                                            <td class="px-4 py-4">
+                                                {{ $house->kode }}
+                                            </td>
+
+                                            <td class="px-4 py-4">
+                                                {{ $house->nama }}
+                                            </td>
+                                            <td class="px-4 py-4">
+                                                {{ $house->capacity}}
+                                            </td>
+
+                                            <td class="px-4 py-4">
+                                                <form action="{{ route('admin.zones.changeStatus', $house->id) }}" method="POST"
+                                                    class="form-status">
+                                                    @csrf
+                                                    @method('PATCH')
+
+                                                    <select name="status" class="status-select cursor-pointer rounded-full border-0
+                                                                                                                    px-3 py-1 text-xs font-medium shadow-sm
+                                                                                                                    focus:ring-2 focus:ring-hijau/30
+                                                                                                                    {{ $house->status == 1
+                            ? 'bg-hijau/10 text-hijau'
+                            : 'bg-merah/10 text-merah' }}" onchange="ubahStatus(this)">
+
+                                                        <option value="1" {{ $house->status == 1 ? 'selected' : '' }}>
+                                                            Aktif
+                                                        </option>
+
+                                                        <option value="0" {{ $house->status == 0 ? 'selected' : '' }}>
+                                                            Tidak Aktif
+                                                        </option>
+
+                                                    </select>
+                                                </form>
+                                            </td>
+                                            <td class="px-4 py-4">
+                                                {{ $house->description}}
+                                            </td>
+                                        </tr>
+
+                        @empty
+                            <tr>
+                                <td colspan="8" class="px-5 py-6 text-center text-teks-lembut">
+                                    Data tidak ditemukan
                                 </td>
                             </tr>
 
-                        @empty
-                            <p>Data tidak ditemukan</p>
                         @endforelse
 
                     </tbody>
@@ -97,4 +133,20 @@
         </div>
 
     </section>
+    <script>
+        function ubahStatus(select) {
+
+            const form = select.closest('form');
+
+            const konfirmasi = confirm(
+                'Apakah Anda yakin ingin mengubah status zona kandang?'
+            );
+
+            if (konfirmasi) {
+                form.submit();
+            } else {
+                location.reload();
+            }
+        }
+    </script>
 @endsection

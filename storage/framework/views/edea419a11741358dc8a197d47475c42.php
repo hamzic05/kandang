@@ -1,1 +1,0 @@
-<section data-dash="kamar" aria-label="Produksi per kamar" class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3"></section><?php /**PATH /home/hamidjumasa/Documents/kandang/src/resources/views/admin/dashboard/rooms.blade.php ENDPATH**/ ?>

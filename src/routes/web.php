@@ -50,6 +50,16 @@ Route::prefix('admin')
             [ZoneChickenController::class, 'changeStatus']
         )->name('zones.changeStatus');
 
+        Route::get(
+            'houses/{house}/zones/contiguous',
+            [ZoneChickenController::class, 'contiguous']
+        )->name('houses.zones.contiguous');
+
+        Route::post(
+            'houses/{house}/zones/contiguous',
+            [ZoneChickenController::class, 'additionalZone']
+        )->name('houses.zones.additionalZone');
+
         Route::resource('zones', ZoneChickenController::class);
 
         //medicine
