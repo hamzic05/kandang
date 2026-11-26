@@ -110,6 +110,7 @@ class ZoneChickenController extends Controller
         return view("admin.zones.show", compact("houses", "count"));
     }
 
+<<<<<<< HEAD:src/app/Http/Controllers/Admin/Zone/ZoneChickenController.php
     public function changeStatus(Request $request, $id)
     {
         $request->validate([
@@ -123,6 +124,14 @@ class ZoneChickenController extends Controller
         $zone->save();
 
         return back()->with('success', 'Status zona berhasil diperbarui.');
+=======
+    public function contiguous($id)
+    {
+        $houses = Houses::select('id', 'code', 'name', 'location')
+            ->where('id', $id)
+            ->firstOrFail();
+        return view('admin.zones.contiguous', compact('houses'));
+>>>>>>> d8ddcb266eba85fe43b142d7a058fd4ea90071d7:app/Http/Controllers/Admin/Zone/ZoneChickenController.php
     }
 
     public function contiguous($id)
@@ -150,6 +159,7 @@ class ZoneChickenController extends Controller
         return view('admin.zones.contiguous', compact('houses', 'count', 'nonactive', 'active', 'endnumber', 'mulai'));
     }
 
+<<<<<<< HEAD:src/app/Http/Controllers/Admin/Zone/ZoneChickenController.php
 
 
     public function additionalZone(Request $request, $id)
@@ -226,6 +236,23 @@ class ZoneChickenController extends Controller
         return redirect()->route('admin.zones.index')
             ->with('success', "{$jumlah} posisi berhasil ditambahkan ke Kamar {$prefix}.");
     }
+=======
+    public function changeStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:0,1'
+        ]);
+
+        $zone = ZoneChicken::select('id','status') 
+        ->findOrFail($id);
+        
+        $zone->status = $request->status;
+        $zone->save();
+
+        return back()->with('success', 'Status zona berhasil diperbarui.');
+    }
+
+>>>>>>> d8ddcb266eba85fe43b142d7a058fd4ea90071d7:app/Http/Controllers/Admin/Zone/ZoneChickenController.php
     public function destroy($id)
     {
 

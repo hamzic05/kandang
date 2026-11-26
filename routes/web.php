@@ -50,8 +50,11 @@ Route::prefix('admin')
             [ZoneChickenController::class, 'changeStatus']
         )->name('zones.changeStatus');
 
+<<<<<<< HEAD:src/routes/web.php
         Route::post('houses/{id}/zones/tambah', [ZoneChickenController::class, 'additionalZone'])->name('houses.zones.additionalZone');
 
+=======
+>>>>>>> d8ddcb266eba85fe43b142d7a058fd4ea90071d7:routes/web.php
         Route::resource('zones', ZoneChickenController::class);
 
         //medicine

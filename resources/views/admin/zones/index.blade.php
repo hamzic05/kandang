@@ -74,6 +74,13 @@
 
                     @endforelse
 
+<<<<<<< HEAD:src/resources/views/admin/zones/index.blade.php
+=======
+                    <a href="#"
+                        class="mt-3 block text-center text-sm font-bold text-[#1D3B2A] transition hover:text-[#6b8e23]">
+                        1 2 »
+                    </a>
+>>>>>>> d8ddcb266eba85fe43b142d7a058fd4ea90071d7:resources/views/admin/zones/index.blade.php
                     <div class="flex items-center justify-between border-t border-garis bg-white px-5 py-3">
                         <span class="text-xs text-teks-redup">
                             Menampilkan {{ $zoneCount }} kandang
