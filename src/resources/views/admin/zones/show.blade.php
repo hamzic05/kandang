@@ -23,6 +23,9 @@
                     <thead class="bg-krem/60">
                         <tr>
                             <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
+                                No
+                            </th>
+                            <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
                                 Kode Kandang
                             </th>
                             <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teks-redup">
@@ -47,11 +50,14 @@
                     </thead>
 
                     <tbody class="divide-y divide-garis">
-
+                        @php $no = 1; @endphp
                         @forelse ($houses as $house)
 
                                         <tr class="hover:bg-krem/30">
 
+                                            <td class="px-4 py-4">
+                                                {{ $no++ }}
+                                            </td>
                                             <td class="px-5 py-4">
                                                 {{ $house->houses->code }}
 
@@ -72,21 +78,7 @@
                                             <td class="px-4 py-4">
                                                 {{ $house->capacity}}
                                             </td>
-                                            <!--<td class="px-4 py-4">
-                                                                                                @if ($house->status == 1)
-                                                                                                <span
-                                                                                                        class="inline-flex items-center gap-2 rounded-full bg-hijau/10 px-3 py-1 text-xs font-medium text-hijau">
-                                                                                                        <i class="fa-solid fa-layer-group"></i>
-                                                                                                    {{ "Aktif" }}
-                                                                                                    </span>
-                                                                                                @else
-                                                                                                <span
-                                                                                                        class="inline-flex items-center gap-2 rounded-full bg-merah/10 px-3 py-1 text-xs font-medium text-merah">
-                                                                                                        <i class="fa-solid fa-layer-group"></i>
-                                                                                                    {{ "Tidak Aktif" }}
-                                                                                                    </span>
-                                                                                                @endif
-                                                                                            </td>-->
+
                                             <td class="px-4 py-4">
                                                 <form action="{{ route('admin.zones.changeStatus', $house->id) }}" method="POST"
                                                     class="form-status">
@@ -94,9 +86,9 @@
                                                     @method('PATCH')
 
                                                     <select name="status" class="status-select cursor-pointer rounded-full border-0
-                                                                            px-3 py-1 text-xs font-medium shadow-sm
-                                                                            focus:ring-2 focus:ring-hijau/30
-                                                                            {{ $house->status == 1
+                                                                                                                    px-3 py-1 text-xs font-medium shadow-sm
+                                                                                                                    focus:ring-2 focus:ring-hijau/30
+                                                                                                                    {{ $house->status == 1
                             ? 'bg-hijau/10 text-hijau'
                             : 'bg-merah/10 text-merah' }}" onchange="ubahStatus(this)">
 
@@ -117,7 +109,14 @@
                                         </tr>
 
                         @empty
-                            <p>Data tidak ditemukan</p>
+                            <tr>
+                                <td>
+                                    <br>
+                                    <p style="padding-left:20px;">Data tidak ditemukan</p>
+                                    <br>
+                                </td>
+                            </tr>
+
                         @endforelse
 
                     </tbody>

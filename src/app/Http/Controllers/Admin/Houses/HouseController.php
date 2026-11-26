@@ -37,11 +37,6 @@ class HouseController extends Controller
         return redirect()->route('admin.houses.index')->with('success', 'Berhasil Menambahkan informasi Data Kandang Ayam');
     }
 
-    public function show($id)
-    {
-
-    }
-
     public function edit($id)
     {
          $house = Houses::findOrFail($id);

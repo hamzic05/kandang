@@ -110,34 +110,122 @@ class ZoneChickenController extends Controller
         return view("admin.zones.show", compact("houses", "count"));
     }
 
-    public function contiguous($id)
-    {
-        $houses = Houses::select('id', 'code', 'name', 'location')
-            ->where('id', $id)
-            ->firstOrFail();
-        return view('admin.zones.contiguous', compact('houses'));
-    }
-
-    public function update(Request $request, $id)
-    {
-
-    }
-
     public function changeStatus(Request $request, $id)
     {
         $request->validate([
             'status' => 'required|in:0,1'
         ]);
 
-        $zone = ZoneChicken::select('id','status') 
-        ->findOrFail($id);
-        
+        $zone = ZoneChicken::select('id', 'status')
+            ->findOrFail($id);
+
         $zone->status = $request->status;
         $zone->save();
 
         return back()->with('success', 'Status zona berhasil diperbarui.');
     }
 
+    public function contiguous($id)
+    {
+        $houses = ZoneChicken::select('id', 'house_id', 'code', 'name', 'capacity', 'status', 'description')   // kolom house_zones
+            ->with('houses:id,code,name')
+            ->where('house_id', $id)->firstOrFail();
+        $count = ZoneChicken::where('house_id', $id)->count();
+        $nonactive = ZoneChicken::where('house_id', $id)
+            ->where('status', '0')
+            ->count();
+        $active = ZoneChicken::where('house_id', $id)
+            ->where('status', '1')
+            ->count();
+
+        $prefix = rtrim($houses->code, '0123456789');
+        $endnumber = ZoneChicken::where('house_id', $id)
+            ->where('code', 'like', $prefix . '%')
+            ->pluck('code')
+            ->filter(fn($c) => rtrim($c, '0123456789') === $prefix)   // buang AB1 saat prefix A
+            ->map(fn($c) => (int) substr($c, strlen($prefix)))
+            ->max() ?? 0;
+
+        $mulai = $endnumber + 1;
+        return view('admin.zones.contiguous', compact('houses', 'count', 'nonactive', 'active', 'endnumber', 'mulai'));
+    }
+
+
+
+    public function additionalZone(Request $request, $id)
+    {
+        $data = $request->validate([
+            'prefix' => ['required', 'regex:/^[A-Z]{1,5}$/'],
+            'jumlah' => ['required', 'integer', 'min:1', 'max:500'],
+            'description' => ['nullable', 'string', 'max:255'],
+        ], [
+            'prefix.regex' => 'Kamar tidak valid.',
+            'jumlah.min' => 'Jumlah minimal 1.',
+            'jumlah.max' => 'Maksimal 500 posisi sekali tambah.',
+        ]);
+
+        $prefix = $data['prefix'];
+        $jumlah = (int) $data['jumlah'];
+        $description = $data['description'] ?? null; 
+
+        try {
+            DB::transaction(function () use ($id, $prefix, $jumlah, $description) {
+                // Kunci baris kamar ini agar dua permintaan bersamaan tidak menghasilkan nomor ganda
+                $nomor = ZoneChicken::where('house_id', $id)
+                    ->where('code', 'regexp', '^' . $prefix . '[0-9]+$')
+                    ->lockForUpdate()
+                    ->pluck('code')
+                    ->map(fn($c) => (int) substr($c, strlen($prefix)));
+
+                if ($nomor->isEmpty()) {
+                    throw ValidationException::withMessages([
+                        'prefix' => "Kamar {$prefix} tidak ditemukan di kandang ini.",
+                    ]);
+                }
+
+                $mulai = $nomor->max() + 1;
+                $now = now();
+                $baris = [];
+
+                for ($i = 0; $i < $jumlah; $i++) {
+                    $kode = $prefix . ($mulai + $i);
+                    $baris[] = [
+                        'house_id' => $id,
+                        'code' => $kode,
+                        'name' => 'Kamar ' . $kode,
+                        'status' => 1,
+                        'capacity' => 1,
+                        'description' =>  $description,
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ];
+                }
+
+                // Cek data unik: kode baru tidak boleh sudah ada di kandang ini
+                $bentrok = ZoneChicken::where('house_id', $id)
+                    ->whereIn('code', array_column($baris, 'code'))
+                    ->pluck('code');
+
+                if ($bentrok->isNotEmpty()) {
+                    throw ValidationException::withMessages([
+                        'jumlah' => 'Kode sudah ada: ' . $bentrok->take(5)->implode(', ') . ($bentrok->count() > 5 ? ', ...' : ''),
+                    ]);
+                }
+
+                foreach (array_chunk($baris, 200) as $bagian) {
+                    ZoneChicken::insert($bagian);
+                }
+            });
+        } catch (UniqueConstraintViolationException) {
+            // Pengaman terakhir dari unique(['house_id','code']) di database
+            return back()->withInput()->withErrors([
+                'jumlah' => 'Nomor bentrok dengan data yang baru saja ditambahkan. Muat ulang halaman lalu coba lagi.',
+            ]);
+        }
+
+        return redirect()->route('admin.zones.index')
+            ->with('success', "{$jumlah} posisi berhasil ditambahkan ke Kamar {$prefix}.");
+    }
     public function destroy($id)
     {
 

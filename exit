@@ -1,0 +1,40 @@
+[33m677e495[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Resolve conflict .gitignore
+[33m73ef29f[m update kandang dan zona beserta bagian-bagian seperti route, controller dan model
+[33md66ae32[m add photo for medicine
+[33md428932[m re-layout the medicine page and add breadcrumbs
+[33m047f7e5[m push kandang dan zona kandang
+[33m34ceac0[m add a new admin header component to all admin menus
+[33m0a7b540[m add navigation from register => login
+[33m2609c6c[m improving selection auth
+[33mc52edf7[m refactor: create medicine components, refactor auth and landing
+[33mca11cf7[m perubahan kandang ayam
+[33m30f9da6[m membuat halaman zone chicken dan houses. serta sidebar,  route dan breadcrumb
+[33m94883f5[m pembaruan  partial content di dalam dashboard, penambahan breadcrumb , Dan struktur menu saat halaman di buka menu drop down tetap terbuka
+[33mcfeda70[m fitur remember me
+[33mff47c21[m Add dropdown for feed and medicine, Medicine page > medicine inventory, medicine add, delete, update, create, show page mediccine.
+[33m0bf690c[m menambahkan logout
+[33mfbaf9a6[m perbaikan halaman dashboard, sidebar, dan header
+[33mc4f1765[m Fitur register menggunakan akun google
+[33m6586176[m branch mencoba fitur register menggunakan akun google
+[33m77ad2e5[m memperbarui validasi pada RegisterController
+[33m862843f[m controller login dan register, route login, register, dashboard
+[33m24e32c7[m a little fixes in auth.js app.js
+[33mc691661[m implement client-side form login/regist validation
+[33m14183a1[m perbaikan struktur blade
+[33m5ca4eb7[m perbaikan tanggal realtime
+[33mc5eb35a[m perbaikan dan penambahan bagian dashboard admin
+[33m0a97873[m Merge branch 'main' of https://github.com/hamzic05/kandang
+[33m9d08341[m migration pakan, obat dan stok pakan
+[33m1d83558[m routes
+[33md585bcd[m perubahan chicken blade, route
+[33m1a19b12[m migration update dan controller ayam
+[33mcd25d4f[m perubahan pada navbar
+[33m6d4f6c3[m adding a sidebar for smaller screens
+[33m81c76eb[m perubahan yang tidak perlu diupload
+[33m764beb2[m resize layout
+[33m0f1e2c8[m create login, register layout + components + js
+[33m47978ce[m Merge branch 'main' of https://github.com/hamzic05/kandang
+[33m125cb8e[m[33m ([m[1;31morigin/local-haemje[m[33m, [m[1;32mlocal-haemje[m[33m)[m index bagian beranda dan index setelah login (dashboard)
+[33m4c33896[m test commit and add component
+[33meca5109[m test commit and add controller admin
+[33m5281abb[m Initial commit Laravel 13 Docker

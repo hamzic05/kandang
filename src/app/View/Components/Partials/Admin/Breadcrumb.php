@@ -55,6 +55,13 @@ class Breadcrumb extends Component
                 ['title' => 'Detail Zona Kandang', 'url' => null],
             ],
 
+            'admin.zones.contiguous' => [
+                ['title' => 'Manajemen Kandang Ayam', 'url' => null],
+                ['title' => 'Zona Kandang', 'url' => route('admin.zones.index')],
+                ['title' => 'Tambah Zona', 'url' => null],
+            ],
+            
+
             //health
             'admin.health.*' => [
                 ['title' => 'Kesehatan', 'url' => null],
