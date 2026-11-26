@@ -1,0 +1,139 @@
+<?php $__env->startSection('content'); ?>
+    <?php if (isset($component)) { $__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2 = $attributes; } ?>
+<?php $component = App\View\Components\Partials\Admin\Header::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('partials.admin.header'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Partials\Admin\Header::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['header' => 'Informasi Zona Kandang Ayam','title' => 'Zona Kandang Ayam']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2)): ?>
+<?php $attributes = $__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2; ?>
+<?php unset($__attributesOriginal7e271ae6dc54e16e60ca8c92e53cb8f2); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2)): ?>
+<?php $component = $__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2; ?>
+<?php unset($__componentOriginal7e271ae6dc54e16e60ca8c92e53cb8f2); ?>
+<?php endif; ?>
+
+    <?php if (isset($component)) { $__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87 = $attributes; } ?>
+<?php $component = App\View\Components\Partials\Admin\Breadcrumb::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('partials.admin.breadcrumb'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\App\View\Components\Partials\Admin\Breadcrumb::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87)): ?>
+<?php $attributes = $__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87; ?>
+<?php unset($__attributesOriginal6e3fb2d6bdca1fd6806c3247c6496e87); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87)): ?>
+<?php $component = $__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87; ?>
+<?php unset($__componentOriginal6e3fb2d6bdca1fd6806c3247c6496e87); ?>
+<?php endif; ?>
+    <?php if(session('success')): ?>
+        <div class="mb-4 rounded-lg bg-hijau/10 px-4 py-3 text-sm font-medium text-hijau">
+            <?php echo e(session('success')); ?>
+
+        </div>
+    <?php endif; ?>
+    <section data-inventory aria-label="Kandang" class="p-[18px] border border-garis rounded-2xl overflow-hidden bg-white">
+        <header class="mb-5">
+            <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+
+
+                <a href="<?php echo e(route('admin.zones.create')); ?>" class="inline-flex shrink-0 items-center justify-center gap-2
+                              rounded-[10px] bg-hijau px-4 py-3
+                              text-sm font-semibold text-white
+                              whitespace-nowrap transition-colors hover:bg-tinta
+                              sm:justify-self-end">
+
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Tentukan Zona Kandang</span>
+
+                </a>
+
+            </div>
+        </header>
+
+        <div class="overflow-hidden rounded-xl border border-garis bg-white">
+            <div class="overflow-x-auto">
+                <div class="rounded-2xl border border-[#2f5d3a] bg-white px-[18px] py-6">
+                    <?php $__empty_1 = true; $__currentLoopData = $zoneChicken; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $zone): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <div class="flex items-center justify-between border-b border-[#26352b] py-4">
+                            <div class="min-w-0">
+                                <h4 class="font-bold text-[#2f5d3a]">
+                                    <a href="<?php echo e(route('admin.zones.show', $zone->house_id)); ?>"
+                                        class="text-base text-hijau font-bold hover:underline transition-colors"><?php echo e($room_column . " " . Str::substr($zone->code, 0, 1)); ?></a>
+                                </h4>
+                                <p class="mt-1 text-sm text-gray-700">
+                                    <?php echo e($zone_code . " " . Str::substr($zone->code, 0, 1)); ?>
+
+                                </p>
+                            </div>
+
+                            <div class="ml-4 flex shrink-0 items-center gap-3">
+                                <a href="<?php echo e(route('admin.zones.contiguous',$zone->house_id)); ?>"
+                                    class="text-[#2f5d3a] transition hover:text-[#07140C]" title="Tambahkan Zona">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2.5">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.862 4.487l2.651 2.651M9 15l9.193-9.193a1.875 1.875 0 012.652 2.652L11.652 17.65 8 18l.348-3z" />
+
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5" />
+                                    </svg>
+                                </a>
+
+                                <div class="min-w-[80px] text-right">
+                                    <p class="font-bold text-[#2f5d3a]">
+                                        <?php echo e($zone->total_capacity . " Zona Kandang Ayam"); ?>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                        <div class="flex items-center justify-between border-b border-[#26352b] py-4">
+                            Tidak ada data kandang tersedia.
+                        </div>
+
+
+                    <?php endif; ?>
+
+                    <div class="flex items-center justify-between border-t border-garis bg-white px-5 py-3">
+                        <span class="text-xs text-teks-redup">
+                            Menampilkan <?php echo e($zoneCount); ?> kandang
+                        </span>
+                        <span class="text-xs font-medium text-teks-lembut">
+                            Data kandang
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="w-full">
+
+            
+
+        </div>
+
+    </section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.index', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /home/hamidjumasa/Documents/kandang/src/resources/views/admin/zones/index.blade.php ENDPATH**/ ?>
