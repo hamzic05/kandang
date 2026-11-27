@@ -123,8 +123,6 @@ class ZoneChickenController extends Controller
         return back()->with('success', 'Status zona berhasil diperbarui.');
     }
 
-
-
     public function contiguous(Request $request, $id)
     {
         $house = Houses::select('id', 'code', 'name', 'location')->findOrFail($id);

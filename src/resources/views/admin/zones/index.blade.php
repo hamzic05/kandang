@@ -72,7 +72,7 @@
                     @endforelse
 
                    
-                    <div class="flex items-center justify-between border-t border-garis bg-white px-5 py-3">
+                    <div class="flex items-center justify-between border-t border-garis bg-white px-4 py-3">
                         <span class="text-xs text-teks-redup">
                             Menampilkan {{ $zoneCount }} kandang
                         </span>
